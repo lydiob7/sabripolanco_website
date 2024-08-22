@@ -35,6 +35,9 @@
     margin: 0;
     line-height: 1;
   }
+  .our-work_section .section_description {
+    font-size: 18px;
+  }
   .our-work_section .hide-on-mobile {
     display: none;
   }
@@ -256,7 +259,7 @@
           </div>
           <div>
             {% if section.settings.body %}
-              <p>{{ section.settings.body }}</p>
+              <p class="section_description">{{ section.settings.body }}</p>
             {% endif %}
             {% if section.settings.cta_text %}
               <a href="/pages/works" class="hide-on-mobile">

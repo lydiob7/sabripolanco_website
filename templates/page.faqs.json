@@ -1,1 +1,230 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":28}},"image_banner_3MPVeE":{"type":"image-banner","blocks":{"text_d7EDk4":{"type":"text","settings":{"text":"GOT QUESTIONS?","text_style":"subtitle"}},"heading_NjNgj6":{"type":"heading","settings":{"heading":"FAQ's","heading_size":"h1"}},"text_wFxEyw":{"type":"text","settings":{"text":"Curious about how we do things around here? Get all the insider info you need below!","text_style":"body"}}},"block_order":["text_d7EDk4","heading_NjNgj6","text_wFxEyw"],"custom_css":[".banner__box {padding-bottom: 4rem;}",".banner__heading {font-size: 60px;}","@media (min-width: 750px) {.banner__box {padding-left: 2rem; padding-right: 2rem; padding-bottom: 8rem; width: 100%; max-width: 1250px; transform: translateY(12vh); } .banner__heading {font-size: 160px; line-height: 1; } .banner__text {font-size: 18px; max-width: 650px; }}"],"settings":{"anchor_id":"","image":"shopify:\/\/shop_images\/Rectangle_118_448a880a-3173-47ac-86d8-aaa822ec881c.png","image_mobile":"shopify:\/\/shop_images\/Rectangle_194.png","overlay_gradient_color_from":"","overlay_gradient_color_to":"","image_overlay_opacity":0,"image_height":"large","desktop_content_position":"middle-center","show_text_box":false,"desktop_content_alignment":"left","color_scheme":"scheme-3","image_behavior":"none","mobile_content_alignment":"left","stack_images_on_mobile":true,"show_text_below":false}},"main_faqs_NUgrPa":{"type":"main-faqs","blocks":{"section_heading_D8VCdt":{"type":"section_heading","settings":{"content":"Our Process"}},"collapsible_row_dKhi4y":{"type":"collapsible_row","settings":{"heading":"How does the design process work?","row_content":"<p>Our design process typically involves a research and strategy phase, concept development, design revisions, and final delivery. We work closely with you at every stage to ensure your vision is realized.<\/p>"}},"collapsible_row_3i9jMn":{"type":"collapsible_row","settings":{"heading":"How far ahead should I book your services?","row_content":"<p>Most of our projects are booked one to two months in advance, so we encourage you to reach out as soon as possible to secure your spot. If you have a hard deadline or launch date, we suggest adding at least a two-week buffer to our usual timelines.<\/p>"}},"collapsible_row_8ahHaF":{"type":"collapsible_row","settings":{"heading":"How long does a typical project take?","row_content":"<p>The timeline varies depending on the project scope. Branding projects usually take 8-10 weeks, web design can take 9-12 weeks, and our Launch Ready service is completed in 12 weeks.<\/p>"}},"collapsible_row_6teN3f":{"type":"collapsible_row","settings":{"heading":"What if I have an urgent project?","row_content":"<p>We value the well-being of our clients and ourselves, as well as the quality of our work. These require time and consideration. That’s why we typically don't take on rushed projects. But we'll do our best to help you out where we can.<\/p>"}},"collapsible_row_f7teD9":{"type":"collapsible_row","settings":{"heading":"What do I need to provide before starting a project?","row_content":"<p>Before starting, you should have a clear understanding of your brand’s messaging, visual identity, and comprehensive brand guidelines. For web design, you'll also need content such as images, and videos.<\/p>"}},"section_heading_cQRCqV":{"type":"section_heading","settings":{"content":"The Studio"}},"collapsible_row_VT6JCJ":{"type":"collapsible_row","settings":{"heading":"What services do you offer?","row_content":"<p>We offer a range of services including branding, web design, email design, social media content creation. Our comprehensive Launch Ready program covers all aspects of your digital presence and gets your brand launch-ready in just 12 weeks.<\/p>"}},"collapsible_row_RVnLmr":{"type":"collapsible_row","settings":{"heading":"What types of brands do you work with?","row_content":"<p>We prioritize working with mission-driven consumer and D2C brands ready to make waves in their industry. This includes emerging brands looking to establish a strong market presence, existing brands in need of refreshing, new founders or entrepreneurs launching innovative ventures, and creatives passionate about making the right impact. If you align with our values of inclusivity, authenticity, and making a difference, we’re may be a perfect match!<\/p>"}},"collapsible_row_8JfVMA":{"type":"collapsible_row","settings":{"heading":"What are your working hours?","row_content":"<p>We're doing things differently! In an effort to promote our well-being and honor a better work-life balance for all, we follow a four-day workweek. Catch us Mondays - Thursdays!<\/p>"}},"collapsible_row_dwUMAf":{"type":"collapsible_row","settings":{"heading":"How do you communicate with clients?","row_content":"<p>We're big on focused work, so we check our inboxes during set hours (1pm-3pm EST). Meanwhile, you can access the most up-to-date information about your project and our collaboration conveniently in Contra. But rest assured, we'll still respond to you as soon as possible!<\/p>"}},"section_heading_QrkcUL":{"type":"section_heading","settings":{"content":"Payments"}},"collapsible_row_hcfaHD":{"type":"collapsible_row","settings":{"heading":"Do you offer payment plans?","row_content":"<p>Yes, we structure payments with an initial 50% non-refundable deposit, followed by milestone payments as the project progresses. Your payments are securely held in escrow until each milestone is completed.<\/p>"}},"collapsible_row_bCG6PC":{"type":"collapsible_row","settings":{"heading":"What payment methods do you accept?","row_content":"<p>We accept payments through Contra, which uses Stripe for all payment transactions, ensuring secure and straightforward transactions.<\/p>"}},"collapsible_row_NBVPRk":{"type":"collapsible_row","settings":{"heading":"What is Contra?","row_content":"<p>Contra is the all-in-one platform providing one workspace for our clients and us kick off projects, sign contracts and send payments in one centralized location. Contra ensures transparency and efficiency, offering tools for secure payment processing through Stripe. This streamlined platform ensures transparency and simplifies our workflow, allowing us to focus on delivering exceptional results for your projects.<\/p>"}},"collapsible_row_zTKgNy":{"type":"collapsible_row","settings":{"heading":"Do you offer discounts?","row_content":"<p>We occasionally offer special rates! We also love giving back with free resources and fun designs. Join our newsletter to stay in the loop. If you're a non-profit, please reach out – we’d love to help if we have the resources!<\/p>"}},"collapsible_row_wKCf3C":{"type":"collapsible_row","settings":{"heading":"What if I need to cancel or reschedule my project?","row_content":"<p>We understand that plans can change. Please review our cancellation and rescheduling policies, detailed in our contract, for more information.<\/p>"}}},"block_order":["section_heading_D8VCdt","collapsible_row_dKhi4y","collapsible_row_3i9jMn","collapsible_row_8ahHaF","collapsible_row_6teN3f","collapsible_row_f7teD9","section_heading_cQRCqV","collapsible_row_VT6JCJ","collapsible_row_RVnLmr","collapsible_row_8JfVMA","collapsible_row_dwUMAf","section_heading_QrkcUL","collapsible_row_hcfaHD","collapsible_row_bCG6PC","collapsible_row_NBVPRk","collapsible_row_zTKgNy","collapsible_row_wKCf3C"],"settings":{"quick_links_text":"QUICK LINKS","open_first_collapsible_row":false,"padding_top":40,"padding_bottom":52}},"section_marquee_8aMxHa":{"type":"section-marquee","settings":{"main_text":"Now booking August & September","secondary_text":"WELLNESS FOR ALL","cta_text":"GET STARTED","cta_url":"shopify:\/\/pages\/contact","padding_top":0,"padding_bottom":0}},"section_services_WWtMyV":{"type":"section-services","settings":{"sub_head":"THE STUDIO","headline":"Our <em>Services<\/em>","body":"Embracing the audacity to be different, we bring brands to life in bold.","cta_text":"See All Services","padding_top":100,"padding_bottom":100}}},"order":["main","image_banner_3MPVeE","main_faqs_NUgrPa","section_marquee_8aMxHa","section_services_WWtMyV"]}
+{
+    "sections": {
+        "main": {
+            "type": "main-page",
+            "disabled": true,
+            "settings": {
+                "padding_top": 28,
+                "padding_bottom": 28
+            }
+        },
+        "image_banner_3MPVeE": {
+            "type": "image-banner",
+            "blocks": {
+                "text_d7EDk4": {
+                    "type": "text",
+                    "settings": {
+                        "text": "GOT QUESTIONS?",
+                        "text_style": "subtitle"
+                    }
+                },
+                "heading_NjNgj6": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "FAQ's",
+                        "heading_size": "h1"
+                    }
+                },
+                "text_wFxEyw": {
+                    "type": "text",
+                    "settings": {
+                        "text": "Curious about how we do things around here? Get all the insider info you need below!",
+                        "text_style": "body"
+                    }
+                }
+            },
+            "block_order": ["text_d7EDk4", "heading_NjNgj6", "text_wFxEyw"],
+            "custom_css": [
+                ".banner__box {padding-bottom: 4rem;}",
+                ".banner__heading {font-size: 60px;}",
+                "@media (min-width: 750px) {.banner__box {padding-left: 2rem; padding-right: 2rem; padding-bottom: 8rem; width: 100%; max-width: 1250px; transform: translateY(5vh); } .banner__heading {font-size: 160px; line-height: 1; } .banner__text {font-size: 18px; max-width: 650px; }}"
+            ],
+            "settings": {
+                "anchor_id": "",
+                "image": "shopify://shop_images/Rectangle_118_448a880a-3173-47ac-86d8-aaa822ec881c.png",
+                "image_mobile": "shopify://shop_images/Rectangle_194.png",
+                "overlay_gradient_color_from": "",
+                "overlay_gradient_color_to": "",
+                "image_overlay_opacity": 0,
+                "image_height": "medium",
+                "desktop_content_position": "middle-center",
+                "show_text_box": false,
+                "desktop_content_alignment": "left",
+                "color_scheme": "scheme-3",
+                "image_behavior": "none",
+                "mobile_content_alignment": "left",
+                "stack_images_on_mobile": true,
+                "show_text_below": false
+            }
+        },
+        "main_faqs_NUgrPa": {
+            "type": "main-faqs",
+            "blocks": {
+                "section_heading_D8VCdt": {
+                    "type": "section_heading",
+                    "settings": {
+                        "content": "Our Process"
+                    }
+                },
+                "collapsible_row_dKhi4y": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "How does the design process work?",
+                        "row_content": "<p>Our design process typically involves a research and strategy phase, concept development, design revisions, and final delivery. We work closely with you at every stage to ensure your vision is realized.</p>"
+                    }
+                },
+                "collapsible_row_3i9jMn": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "How far ahead should I book your services?",
+                        "row_content": "<p>Most of our projects are booked one to two months in advance, so we encourage you to reach out as soon as possible to secure your spot. If you have a hard deadline or launch date, we suggest adding at least a two-week buffer to our usual timelines.</p>"
+                    }
+                },
+                "collapsible_row_8ahHaF": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "How long does a typical project take?",
+                        "row_content": "<p>The timeline varies depending on the project scope. Branding projects usually take 8-10 weeks, web design can take 9-12 weeks, and our Launch Ready service is completed in 12 weeks.</p>"
+                    }
+                },
+                "collapsible_row_6teN3f": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What if I have an urgent project?",
+                        "row_content": "<p>We value the well-being of our clients and ourselves, as well as the quality of our work. These require time and consideration. That’s why we typically don't take on rushed projects. But we'll do our best to help you out where we can.</p>"
+                    }
+                },
+                "collapsible_row_f7teD9": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What do I need to provide before starting a project?",
+                        "row_content": "<p>Before starting, you should have a clear understanding of your brand’s messaging, visual identity, and comprehensive brand guidelines. For web design, you'll also need content such as images, and videos.</p>"
+                    }
+                },
+                "section_heading_cQRCqV": {
+                    "type": "section_heading",
+                    "settings": {
+                        "content": "The Studio"
+                    }
+                },
+                "collapsible_row_VT6JCJ": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What services do you offer?",
+                        "row_content": "<p>We offer a range of services including branding, web design, email design, social media content creation. Our comprehensive Launch Ready program covers all aspects of your digital presence and gets your brand launch-ready in just 12 weeks.</p>"
+                    }
+                },
+                "collapsible_row_RVnLmr": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What types of brands do you work with?",
+                        "row_content": "<p>We prioritize working with mission-driven consumer and D2C brands ready to make waves in their industry. This includes emerging brands looking to establish a strong market presence, existing brands in need of refreshing, new founders or entrepreneurs launching innovative ventures, and creatives passionate about making the right impact. If you align with our values of inclusivity, authenticity, and making a difference, we’re may be a perfect match!</p>"
+                    }
+                },
+                "collapsible_row_8JfVMA": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What are your working hours?",
+                        "row_content": "<p>We're doing things differently! In an effort to promote our well-being and honor a better work-life balance for all, we follow a four-day workweek. Catch us Mondays - Thursdays!</p>"
+                    }
+                },
+                "collapsible_row_dwUMAf": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "How do you communicate with clients?",
+                        "row_content": "<p>We're big on focused work, so we check our inboxes during set hours (1pm-3pm EST). Meanwhile, you can access the most up-to-date information about your project and our collaboration conveniently in Contra. But rest assured, we'll still respond to you as soon as possible!</p>"
+                    }
+                },
+                "section_heading_QrkcUL": {
+                    "type": "section_heading",
+                    "settings": {
+                        "content": "Payments"
+                    }
+                },
+                "collapsible_row_hcfaHD": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "Do you offer payment plans?",
+                        "row_content": "<p>Yes, we structure payments with an initial 50% non-refundable deposit, followed by milestone payments as the project progresses. Your payments are securely held in escrow until each milestone is completed.</p>"
+                    }
+                },
+                "collapsible_row_bCG6PC": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What payment methods do you accept?",
+                        "row_content": "<p>We accept payments through Contra, which uses Stripe for all payment transactions, ensuring secure and straightforward transactions.</p>"
+                    }
+                },
+                "collapsible_row_NBVPRk": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What is Contra?",
+                        "row_content": "<p>Contra is the all-in-one platform providing one workspace for our clients and us kick off projects, sign contracts and send payments in one centralized location. Contra ensures transparency and efficiency, offering tools for secure payment processing through Stripe. This streamlined platform ensures transparency and simplifies our workflow, allowing us to focus on delivering exceptional results for your projects.</p>"
+                    }
+                },
+                "collapsible_row_zTKgNy": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "Do you offer discounts?",
+                        "row_content": "<p>We occasionally offer special rates! We also love giving back with free resources and fun designs. Join our newsletter to stay in the loop. If you're a non-profit, please reach out – we’d love to help if we have the resources!</p>"
+                    }
+                },
+                "collapsible_row_wKCf3C": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What if I need to cancel or reschedule my project?",
+                        "row_content": "<p>We understand that plans can change. Please review our cancellation and rescheduling policies, detailed in our contract, for more information.</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "section_heading_D8VCdt",
+                "collapsible_row_dKhi4y",
+                "collapsible_row_3i9jMn",
+                "collapsible_row_8ahHaF",
+                "collapsible_row_6teN3f",
+                "collapsible_row_f7teD9",
+                "section_heading_cQRCqV",
+                "collapsible_row_VT6JCJ",
+                "collapsible_row_RVnLmr",
+                "collapsible_row_8JfVMA",
+                "collapsible_row_dwUMAf",
+                "section_heading_QrkcUL",
+                "collapsible_row_hcfaHD",
+                "collapsible_row_bCG6PC",
+                "collapsible_row_NBVPRk",
+                "collapsible_row_zTKgNy",
+                "collapsible_row_wKCf3C"
+            ],
+            "settings": {
+                "quick_links_text": "QUICK LINKS",
+                "open_first_collapsible_row": false,
+                "padding_top": 40,
+                "padding_bottom": 52
+            }
+        },
+        "section_marquee_8aMxHa": {
+            "type": "section-marquee",
+            "settings": {
+                "main_text": "Now booking August & September",
+                "secondary_text": "WELLNESS FOR ALL",
+                "cta_text": "GET STARTED",
+                "cta_url": "shopify://pages/contact",
+                "padding_top": 0,
+                "padding_bottom": 0
+            }
+        },
+        "section_services_WWtMyV": {
+            "type": "section-services",
+            "settings": {
+                "sub_head": "THE STUDIO",
+                "headline": "Our <em>Services</em>",
+                "body": "Embracing the audacity to be different, we bring brands to life in bold.",
+                "cta_text": "See All Services",
+                "padding_top": 100,
+                "padding_bottom": 100
+            }
+        }
+    },
+    "order": ["main", "image_banner_3MPVeE", "main_faqs_NUgrPa", "section_marquee_8aMxHa", "section_services_WWtMyV"]
+}

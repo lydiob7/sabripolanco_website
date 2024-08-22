@@ -1,1 +1,209 @@
-{"sections":{"main":{"type":"about-page","settings":{}},"image_banner_z7P4i3":{"type":"image-banner","custom_css":["@media (max-width: 749px) {.banner__content {padding-top: 0; height: 70px; } .banner img {display: none; }}"],"settings":{"anchor_id":"","image":"shopify:\/\/shop_images\/Frame_174.png","overlay_gradient_color_from":"","overlay_gradient_color_to":"","image_overlay_opacity":0,"image_height":"adapt","desktop_content_position":"middle-center","show_text_box":false,"desktop_content_alignment":"center","color_scheme":"","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":false}},"section_mission_bT3Vdz":{"type":"section-mission","custom_css":["@media (max-width: 749px) {.floating-phone {top: 0; right: 20px; }}"],"settings":{"section_headline":"ABOUT US","text_first_row":"For brands that aren’t afraid","text_second_row":"to color outside the lines.","chat_bubble_text":"Let’s create for the better! Are you in? 🤠","text_third_row":"","short_description":"","rectangle_text":"Our mission is to restore what it means to do good and feel good, for everybody. We believe in wellness for all.","button_text":"","button_link":"","padding_top":40,"padding_bottom":52}},"section_launch_ready_alternative_LCU8Bw":{"type":"section-launch-ready-alternative","settings":{"background_image":"shopify:\/\/shop_images\/DTS_Daniel-Faro_Movement_052_1_2.jpg","heading":"Get Launch Ready in 12 weeks","supra_title":"SUMMER GLOW-UP","button_text":"Learn More","button_url":"","padding_top":40,"padding_bottom":52}},"section_values_bgxx7c":{"type":"section-values","settings":{"value1_heading":"Be Bold","value1_body":"Embrace the audacity to be different. Don’t be afraid to take up space and play. Together, we rebel against the mundane.","value2_heading":"Live Authentic","value2_body":"Keep it real. Your people will find you and love you for it. Authenticity is the ultimate art.","value3_heading":"Welcome the Wellness","value3_body":"Wellness has no container. No labels. It’s welcome in all our lives. Everybody is worthy of feeling good.","value4_heading":"Stay Captivating","value4_body":"Same Thing as the section above, I think we might want to revise the values so that they don’t only speak about us but also to show how that is meaningful\/beneficial to our clients. Les about “me,” more about what I do for them! (But not too sales-y)","padding_top":0,"padding_bottom":0}},"section_services_3gjNLm":{"type":"section-services","settings":{"sub_head":"THE STUDIO","headline":"Our <em>Services<\/em>","body":"Embracing the audacity to be different, we bring brands to life in bold.","cta_text":"See All Services","padding_top":100,"padding_bottom":100}},"section_marquee_TBfmwe":{"type":"section-marquee","settings":{"main_text":"Now booking","secondary_text":"WELLNESS FOR ALL","cta_text":"GET STARTED","cta_url":"","padding_top":0,"padding_bottom":0}},"meet_sabri_hjDJcd":{"type":"meet-sabri","settings":{"sub_head":"FOUNDER & CREATIVE DIRECTOR","headline":"Meet <em>Sabri<\/em>","body":"<p>Hi there! I like to think that I'm part of a new wave of designers. Those who believe in the power of mindful and strategic design for positive change. A rebel with a cause. A celebration of wellness for all. I blend agency expertise and the spirit of a creative to craft bold, authentic brand experiences that grow loyal communities and embrace joy.<\/p><p>My approach? A dash of play, empathy, and a whole lot of purpose. I partner with brands who genuinely care - especially founders from BIPOC, Latinx, or LGBTQIA+ communities - to bring their visions to life in vibrant color.<\/p><p>When I'm not designing, you'll find me somewhere remote, trying out a new hobby: surfing, dancing, or creating content for myself or my local skate park.<\/p><p>Let's create something meaningful together!<\/p>","color_scheme":"","padding_top":80,"padding_bottom":100}},"section_spacer_eJT4PR":{"type":"section-spacer","custom_css":["@media (min-width: 750px) {hr {display: none; }}"],"settings":{"show_separator":true,"full_width":false,"separator_color":"#000000","color_scheme":"","padding_top":0,"padding_bottom":40}},"section_faqs_BVBW7W":{"type":"section-faqs","blocks":{"collapsible_row_naycpd":{"type":"collapsible_row","settings":{"heading":"What do I need before starting a branding project?","row_content":"<p>We love our processes smooth and streamlined. We ask that you come prepared with a solid grasp of what you’re looking for, your business goals, and a commitment to collaborate throughout the project. You may also need to set aside a budget for any additional assets for your brand or website.<\/p>"}},"collapsible_row_ByFaUJ":{"type":"collapsible_row","settings":{"heading":"How far ahead should I book?","row_content":"<p>Most of our projects are booked one to two months in advance, so we encourage you to reach out as soon as possible to secure your spot. If you have a hard deadline or launch date, we suggest adding at least a two-week buffer to our usual timelines.<\/p>"}},"collapsible_row_WQg3HA":{"type":"collapsible_row","settings":{"heading":"What if I have an urgent project?","row_content":"<p>We value the well-being of our clients and ourselves, as well as the quality of our work. These require time and consideration. That’s why we typically don't take on rushed projects. But we'll do our best to help you out where we can.<\/p>"}},"collapsible_row_gWdBHf":{"type":"collapsible_row","settings":{"heading":"Can you just design the logo?","row_content":"<p>We don't do standalone logos. Here’s why: a logo alone doesn't build a brand. We're here to create the full experience, from crafting your story and bringing your identity to life, to designing a striking website that’s an authentic expression of you. We're in the business of building brands and communities. That goes beyond a logo.<\/p>"}},"collapsible_row_fPzX7i":{"type":"collapsible_row","settings":{"heading":"Do you offer discounts?","row_content":"<p>We occasionally offer special rates! We also love giving back with free resources and fun designs. Join our newsletter to stay in the loop. If you're a non-profit, please reach out – we’d love to help if we have the resources!<\/p>"}},"collapsible_row_NTxPe4":{"type":"collapsible_row","settings":{"heading":"Do you only work with BIPOC or queer founders?","row_content":"<p>While we prioritize creating spaces that center around women, BIPOC, and queer founders (because not enough of those spaces exist), we're passionate about working with anyone who shares our values and vision.<\/p>"}}},"block_order":["collapsible_row_naycpd","collapsible_row_ByFaUJ","collapsible_row_WQg3HA","collapsible_row_gWdBHf","collapsible_row_fPzX7i","collapsible_row_NTxPe4"],"settings":{"caption":"GOT QUESTIONS?","heading":"We Have Answers","open_first_collapsible_row":false,"button_text":"View all FAQs","button_link":"shopify:\/\/pages\/faqs","padding_top":0,"padding_bottom":52}},"section_launch_ready_VWzRhX":{"type":"section-launch-ready","settings":{"sub_head":"SUMMER GLOW-UP","headline":"Get Launch Ready","headline_italics":"With Us","body":"Your brand deserves to glow. In 12 weeks, we’ll take you from idea to launch, handling everything from visual identity to website, emails to socials. Turn heads by the end of summer, with a bold brand people can’t help but love.","cta_text":"Get Started","padding_top":100,"padding_bottom":52}}},"order":["main","image_banner_z7P4i3","section_mission_bT3Vdz","section_launch_ready_alternative_LCU8Bw","section_values_bgxx7c","section_services_3gjNLm","section_marquee_TBfmwe","meet_sabri_hjDJcd","section_spacer_eJT4PR","section_faqs_BVBW7W","section_launch_ready_VWzRhX"]}
+{
+    "sections": {
+        "main": {
+            "type": "about-page",
+            "settings": {}
+        },
+        "image_banner_z7P4i3": {
+            "type": "image-banner",
+            "custom_css": [
+                "@media (max-width: 749px) {.banner__content {padding-top: 0; height: 70px; } .banner img {display: none; }}"
+            ],
+            "settings": {
+                "anchor_id": "",
+                "image": "shopify://shop_images/Frame_174.png",
+                "overlay_gradient_color_from": "",
+                "overlay_gradient_color_to": "",
+                "image_overlay_opacity": 0,
+                "image_height": "adapt",
+                "desktop_content_position": "middle-center",
+                "show_text_box": false,
+                "desktop_content_alignment": "center",
+                "color_scheme": "",
+                "image_behavior": "none",
+                "mobile_content_alignment": "center",
+                "stack_images_on_mobile": false,
+                "show_text_below": false
+            }
+        },
+        "section_mission_bT3Vdz": {
+            "type": "section-mission",
+            "custom_css": ["@media (max-width: 749px) {.floating-phone {top: 0; right: 20px; }}"],
+            "settings": {
+                "section_headline": "ABOUT US",
+                "text_first_row": "For brands that aren’t afraid",
+                "text_second_row": "to color outside the lines.",
+                "chat_bubble_text": "Let’s create for the better! Are you in? 🤠",
+                "text_third_row": "",
+                "short_description": "",
+                "rectangle_text": "Our mission is to restore what it means to do good and feel good, for everybody. We believe in wellness for all.",
+                "button_text": "",
+                "button_link": "",
+                "padding_top": 40,
+                "padding_bottom": 52
+            }
+        },
+        "section_launch_ready_alternative_LCU8Bw": {
+            "type": "section-launch-ready-alternative",
+            "settings": {
+                "background_image": "shopify://shop_images/DTS_Daniel-Faro_Movement_052_1_2.jpg",
+                "heading": "Get Launch Ready in 12 weeks",
+                "supra_title": "SUMMER GLOW-UP",
+                "button_text": "Learn More",
+                "button_url": "",
+                "padding_top": 40,
+                "padding_bottom": 52
+            }
+        },
+        "section_values_bgxx7c": {
+            "type": "section-values",
+            "settings": {
+                "value1_heading": "Be Bold",
+                "value1_body": "Embrace the audacity to be different. Don’t be afraid to take up space and play. Together, we rebel against the mundane.",
+                "value2_heading": "Live Authentic",
+                "value2_body": "Keep it real. Your people will find you and love you for it. Authenticity is the ultimate art.",
+                "value3_heading": "Welcome the Wellness",
+                "value3_body": "Wellness has no container. No labels. It’s welcome in all our lives. Everybody is worthy of feeling good.",
+                "value4_heading": "Stay Captivating",
+                "value4_body": "Same Thing as the section above, I think we might want to revise the values so that they don’t only speak about us but also to show how that is meaningful/beneficial to our clients. Les about “me,” more about what I do for them! (But not too sales-y)",
+                "padding_top": 0,
+                "padding_bottom": 0
+            }
+        },
+        "section_services_3gjNLm": {
+            "type": "section-services",
+            "settings": {
+                "sub_head": "THE STUDIO",
+                "headline": "Our <em>Services</em>",
+                "body": "Embracing the audacity to be different, we bring brands to life in bold.",
+                "cta_text": "See All Services",
+                "padding_top": 100,
+                "padding_bottom": 100
+            }
+        },
+        "section_marquee_TBfmwe": {
+            "type": "section-marquee",
+            "settings": {
+                "main_text": "Now booking",
+                "secondary_text": "WELLNESS FOR ALL",
+                "cta_text": "GET STARTED",
+                "cta_url": "",
+                "padding_top": 0,
+                "padding_bottom": 0
+            }
+        },
+        "meet_sabri_hjDJcd": {
+            "type": "meet-sabri",
+            "settings": {
+                "sub_head": "FOUNDER & CREATIVE DIRECTOR",
+                "headline": "Meet <em>Sabri</em>",
+                "body": "<p>Hi there! I like to think that I'm part of a new wave of designers. Those who believe in the power of mindful and strategic design for positive change. A rebel with a cause. A celebration of wellness for all. I blend agency expertise and the spirit of a creative to craft bold, authentic brand experiences that grow loyal communities and embrace joy.</p><p>My approach? A dash of play, empathy, and a whole lot of purpose. I partner with brands who genuinely care - especially founders from BIPOC, Latinx, or LGBTQIA+ communities - to bring their visions to life in vibrant color.</p><p>When I'm not designing, you'll find me somewhere remote, trying out a new hobby: surfing, dancing, or creating content for myself or my local skate park.</p><p>Let's create something meaningful together!</p>",
+                "color_scheme": "",
+                "padding_top": 80,
+                "padding_bottom": 100
+            }
+        },
+        "section_spacer_eJT4PR": {
+            "type": "section-spacer",
+            "custom_css": ["@media (min-width: 750px) {hr {display: none; }}"],
+            "settings": {
+                "show_separator": true,
+                "full_width": false,
+                "separator_color": "#000000",
+                "color_scheme": "",
+                "padding_top": 0,
+                "padding_bottom": 40
+            }
+        },
+        "section_faqs_BVBW7W": {
+            "type": "section-faqs",
+            "blocks": {
+                "collapsible_row_naycpd": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What do I need before starting a branding project?",
+                        "row_content": "<p>We love our processes smooth and streamlined. We ask that you come prepared with a solid grasp of what you’re looking for, your business goals, and a commitment to collaborate throughout the project. You may also need to set aside a budget for any additional assets for your brand or website.</p>"
+                    }
+                },
+                "collapsible_row_ByFaUJ": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "How far ahead should I book?",
+                        "row_content": "<p>Most of our projects are booked one to two months in advance, so we encourage you to reach out as soon as possible to secure your spot. If you have a hard deadline or launch date, we suggest adding at least a two-week buffer to our usual timelines.</p>"
+                    }
+                },
+                "collapsible_row_WQg3HA": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "What if I have an urgent project?",
+                        "row_content": "<p>We value the well-being of our clients and ourselves, as well as the quality of our work. These require time and consideration. That’s why we typically don't take on rushed projects. But we'll do our best to help you out where we can.</p>"
+                    }
+                },
+                "collapsible_row_gWdBHf": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "Can you just design the logo?",
+                        "row_content": "<p>We don't do standalone logos. Here’s why: a logo alone doesn't build a brand. We're here to create the full experience, from crafting your story and bringing your identity to life, to designing a striking website that’s an authentic expression of you. We're in the business of building brands and communities. That goes beyond a logo.</p>"
+                    }
+                },
+                "collapsible_row_fPzX7i": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "Do you offer discounts?",
+                        "row_content": "<p>We occasionally offer special rates! We also love giving back with free resources and fun designs. Join our newsletter to stay in the loop. If you're a non-profit, please reach out – we’d love to help if we have the resources!</p>"
+                    }
+                },
+                "collapsible_row_NTxPe4": {
+                    "type": "collapsible_row",
+                    "settings": {
+                        "heading": "Do you only work with BIPOC or queer founders?",
+                        "row_content": "<p>While we prioritize creating spaces that center around women, BIPOC, and queer founders (because not enough of those spaces exist), we're passionate about working with anyone who shares our values and vision.</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "collapsible_row_naycpd",
+                "collapsible_row_ByFaUJ",
+                "collapsible_row_WQg3HA",
+                "collapsible_row_gWdBHf",
+                "collapsible_row_fPzX7i",
+                "collapsible_row_NTxPe4"
+            ],
+            "settings": {
+                "caption": "GOT QUESTIONS?",
+                "heading": "We Have Answers",
+                "open_first_collapsible_row": false,
+                "button_text": "View all FAQs",
+                "button_link": "shopify://pages/faqs",
+                "padding_top": 0,
+                "padding_bottom": 52
+            }
+        },
+        "section_launch_ready_VWzRhX": {
+            "type": "section-launch-ready",
+            "custom_css": [".bottom-separator {display: none;}"],
+            "settings": {
+                "sub_head": "SUMMER GLOW-UP",
+                "headline": "Get Launch Ready",
+                "headline_italics": "with us",
+                "body": "Your brand deserves to glow. In 12 weeks, we’ll take you from idea to launch, handling everything from visual identity to website, emails to socials. Turn heads by the end of summer, with a bold brand people can’t help but love.",
+                "cta_text": "Get Started",
+                "padding_top": 0,
+                "padding_bottom": 100
+            }
+        }
+    },
+    "order": [
+        "main",
+        "image_banner_z7P4i3",
+        "section_mission_bT3Vdz",
+        "section_launch_ready_alternative_LCU8Bw",
+        "section_values_bgxx7c",
+        "section_services_3gjNLm",
+        "section_marquee_TBfmwe",
+        "meet_sabri_hjDJcd",
+        "section_spacer_eJT4PR",
+        "section_faqs_BVBW7W",
+        "section_launch_ready_VWzRhX"
+    ]
+}

@@ -84,8 +84,9 @@
     flex-shrink: 0;
     flex-grow: 0;
   }
-  #section-{{ section.id }} .section-carousel .video video {
+  #section-{{ section.id }} .section-carousel .video .video-element {
     width: 100%;
+    max-height: 463px;
   }
 
   
@@ -97,10 +98,18 @@
       font-size: 100px;
     }
     #section-{{ section.id }} .section-carousel .video {
-      flex-basis: calc(25% - 1rem);
+      flex-basis: calc(35% - 1rem);
     }
     #section-{{ section.id }} .section-carousel {
       margin-right: 0;
+    }
+  }
+  @media (min-width: 990px) {  
+    #section-{{ section.id }} .section-carousel .video {
+      flex-basis: calc(25% - 1rem);
+    }
+    #section-{{ section.id }} .section-carousel .video .video-element {
+      max-height: 580px;
     }
   }
   @media (min-width: 1440px) {  
@@ -142,11 +151,18 @@
           <div class="section-carousel">  
             {% for block in section.blocks %}
               <div class="video">
-                <video controls>
-                  {% for source in block.settings.video.sources %}
-                    <source src="{{ source.url }}" type="{{ block.settings.video.media_type }}/{{ source.format }}">
-                  {% endfor %}
-                </video>
+                {% if block.settings.video != blank %}
+                  <video controls class="video-element">
+                    {% for source in block.settings.video.sources %}
+                      <source src="{{ source.url }}" type="{{ block.settings.video.media_type }}/{{ source.format }}">
+                    {% endfor %}
+                  </video>
+                {% elsif block.settings.video_url != blank %}
+                  {% assign video_id = block.settings.video_url | split: 'shorts/' %}
+                  {% if video_id[1] != blank %}
+                    <iframe class="video-element" width="375" height="667" src="https://www.youtube.com/embed/{{ video_id[1] }}" title="Web Testimonial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  {% endif %}
+                {% endif %}
               </div>
             {% endfor %}  
           </div>
@@ -242,6 +258,12 @@
             "type": "video",
             "id": "video",
             "label": "Video"
+          },
+          {
+            "type": "url",
+            "id": "video_url",
+            "label": "YouTube Short URL",
+            "info": "Make sure to use a YouTube Short video, not a normal YouTube video. In case there is a video selected above this URL won't be used"
           }
         ]
       }
