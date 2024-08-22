@@ -1,0 +1,455 @@
+<style>
+  #section-{{ section.id }} {
+    position: relative;
+    padding: 40px 0 60px 0;
+    border-bottom: 1px solid black;
+    background-color: #FDFDF9;
+    overflow-x: hidden;
+  }
+  #section-{{ section.id }} .floating-img {
+    display: none;
+  }
+  #section-{{ section.id }} .inner-container {
+    max-width: 520px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #section-{{ section.id }} .sub-head,
+  #section-{{ section.id }} .or-text {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+  }
+  #section-{{ section.id }} .headline {
+    font-size: 60px;
+    line-height: 1;
+    margin: 1rem 0 2rem 0;
+  }
+  #section-{{ section.id }} .description,
+  #section-{{ section.id }} .timeline-text {
+    font-size: 18px;
+  }
+
+  #section-{{ section.id }} .or-separator {
+    position: relative;
+    margin: 50px auto;
+    width: max-content;
+  }
+  #section-{{ section.id }} .or-separator::before,
+  #section-{{ section.id }} .or-separator::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    height: 1px;
+    width: 50px;
+    background-color: black;
+  }
+  #section-{{ section.id }} .or-separator::before {
+    left: calc((50px + 2rem) * -1);
+  }
+  #section-{{ section.id }} .or-separator::after {
+    right: calc((50px + 2rem) * -1);
+  }
+  #section-{{ section.id }} .launch-ready-container {
+    position: relative;
+    max-width: 1250px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 2rem;
+  }
+  #section-{{ section.id }} .discount-badge {
+    position: absolute;
+    background-color: black;
+    z-index: 3;
+    color: white;
+    padding: 2.5rem 4rem;
+    font-family: "SeriouslyNostalgic Fn";
+    font-size: 44px;
+    line-height: 1;
+    border-top-left-radius: 80%;
+    border-top-right-radius: 40%;
+    border-bottom-right-radius: 80%;
+    border-bottom-left-radius: 40%;
+    right: 15vw;
+    bottom: 460px;
+    transform: rotate(-7deg);
+  }
+  #section-{{ section.id }} .discount-badge > * {
+    transform: rotate(7deg) translateY(7px);
+  }
+  #section-{{ section.id }} .launch-ready-cards {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 70vw);
+    gap: 2rem;
+    overflow-x: auto;
+    margin: 50px 0 80px 0;
+    scroll-snap-type: x mandatory;
+  }
+  #section-{{ section.id }} .launch-ready-card {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    scroll-snap-align: start;
+  }
+  #section-{{ section.id }} .launch-ready-card .hover-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 24px;
+    transition: transform .3s ease;
+  }
+  #section-{{ section.id }} .launch-ready-card .hover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #section-{{ section.id }} .launch-ready-card .text-content {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: max-content;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 24px;
+    padding: 36px 24px;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    transition: all .3s ease;
+  }
+  #section-{{ section.id }} .launch-ready-card .launch-ready-card-title {
+    font-family: "Suisse Intl";
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+  }
+  #section-{{ section.id }} .launch-ready-card:hover .launch-ready-card-title {
+    color: white;
+  }
+  #section-{{ section.id }} .launch-ready-card .launch-ready-card-description {
+    font-size: 16px;
+  }
+  #section-{{ section.id }} .launch-ready-card .dot-icon {
+    align-self: end;
+  }
+  #section-{{ section.id }} .launch-ready-card:hover .dot-icon path {
+    fill: white;
+  }
+  #section-{{ section.id }} .off-text {
+    font-family: "Suisse Intl";
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 500;
+  }
+  #section-{{ section.id }} .launch-ready-description-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: 18px;
+  }
+  #section-{{ section.id }} .launch-ready-price-comparison {
+    font-family: "SeriouslyNostalgic Fn";
+    font-size: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  #section-{{ section.id }} .compared-at-price {
+    color: #AEA8A8;
+  }
+  #section-{{ section.id }} .launch-ready-description-wrapper .button {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 750px) {
+    #section-{{ section.id }} {
+      padding: 80px 0;
+    }
+    #section-{{ section.id }} .inner-container {
+    }
+    #section-{{ section.id }} .headline {
+      font-size: 80px;
+    }
+    #section-{{ section.id }} .discount-badge {
+      bottom: 410px;
+    }
+    #section-{{ section.id }} .launch-ready-cards {
+      grid-template-columns: repeat(4, 300px);
+    }
+  }
+  @media (min-width: 1100px) {
+    #section-{{ section.id }} .floating-img {
+      display: block;
+      position: absolute;
+      object-fit: scale-down;
+      height: auto;
+    }
+    #section-{{ section.id }} .floating-img-1 {
+      width: 220px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-550px)
+    }
+    #section-{{ section.id }} .floating-img-2 {
+      width: 340px;
+      right: 50%;
+      transform: translateX(900px);
+      top: 250px;
+    }
+    #section-{{ section.id }} .discount-badge {
+      right: auto;
+      left: 50%;
+      bottom: auto;
+      top: 120px;
+      transform: translateX(-50%) rotate(-7deg);
+    }
+    #section-{{ section.id }} .launch-ready-cards {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 128px;
+      overflow: initial;
+    }
+    #section-{{ section.id }} .launch-ready-card:hover .text-content {
+      transform: rotate(-2.4deg);
+    }
+    #section-{{ section.id }} .launch-ready-card:hover .hover-image {
+      transform: rotate(5.84deg) translateY(-120px) translateX(20px);
+    }
+  }
+</style>
+
+<section id="section-{{ section.id }}">
+  {% if metaobject.title != "Launch Ready" %}
+    {% if section.settings.floating_img1 != blank %}
+      <img class="floating-img floating-img-1" src="{{ section.settings.floating_img1.src | image_url }}" alt="{{ section.settings.floating_img1.alt }}" width="{{ section.settings.floating_img1.width }}" height="{{ section.settings.floating_img1.height }}" />
+    {% endif %}
+    {% if section.settings.floating_img2 != blank %}
+      <img class="floating-img floating-img-2" src="{{ section.settings.floating_img2.src | image_url }}" alt="{{ section.settings.floating_img2.alt }}" width="{{ section.settings.floating_img2.width }}" height="{{ section.settings.floating_img2.height }}" />
+    {% endif %}
+    
+    <div class="inner-container">
+      {% if metaobject.title != blank %}
+        <div class="sub-head">{{ metaobject.title }}</div>
+      {% endif %}
+      {% if metaobject.price != blank %}
+        <h2 class="headline">{{ metaobject.price | money_without_trailing_zeros }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+      {% if metaobject.timeline_text != blank %}
+        <div class="timeline-text">
+          {{ metaobject.timeline_text | metafield_tag }}
+        </div>
+      {% endif %}
+  
+      {% if section.settings.cta_text %}
+        <a href="{{ section.settings.cta_url }}">
+          <button class="button">
+            {{ section.settings.cta_text }} <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+          </button>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="or-separator">
+      <div class="or-text">or</div>
+    </div>
+  {% endif %}
+
+  <div class="launch-ready-container">
+    <h3 class="headline">{{ section.settings.launch_ready_title }}</h3>
+
+    <div class="discount-badge">
+      <div>
+        {{ section.settings.launch_ready_discount | money_without_trailing_zeros }}
+      </div>
+      <div class="off-text">OFF</div>
+    </div>
+    <div class="launch-ready-cards">
+      {% for card in section.blocks %}
+        <div class="launch-ready-card">
+          <style>
+            {% if section.settings.hover_bg_color != blank %}
+            #section-{{ section.id }} .launch-ready-card:hover .text-content {
+              background-color: {{ section.settings.hover_bg_color }};
+              color: white;
+              border-color: {{ section.settings.hover_bg_color }};
+            }
+            {% endif %}
+          </style>
+          {% if card.settings.hover_image != blank %}
+            <div class="hover-image">
+              <img src="{{ card.settings.hover_image.src | image_url }}" alt="{{ card.settings.hover_image.alt }}" width="{{ card.settings.hover_image.width }}" height="{{ card.settings.hover_image.height }}" />
+            </div>
+          {% endif %}
+          <div class="text-content">
+            <h4 class="launch-ready-card-title">{{ card.settings.headline }}</h4>
+            <div class="launch-ready-card-description">
+              {{ card.settings.body }}
+            </div>
+            <svg
+              class="dot-icon"
+              width="27"
+              height="27"
+              viewBox="0 0 27 27"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M13.5411 26.8212L11.8302 20.0461L6.97124 25.0419L8.81901 18.3352L2.11227 20.1829L7.10811 15.324L0.401371 13.6131L7.10811 11.8337L2.11227 6.97476L8.81901 8.82254L6.97124 2.18424L11.8302 7.11164L13.5411 0.404899L15.3204 7.11164L20.1794 2.18424L18.3316 8.82254L25.0384 6.97476L20.0425 11.8337L26.7493 13.6131L20.0425 15.324L25.0384 20.1829L18.3316 18.3352L20.1794 25.0419L15.3204 20.0461L13.5411 26.8212Z" fill="black"/>
+            </svg>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="launch-ready-description-wrapper">
+      <div class="launch-ready-timeline-text">
+          {{ shop.metaobjects.services['launch-ready'].timeline_text | metafield_tag }}
+      </div>
+      
+      <div class="launch-ready-description">
+        {{ section.settings.launch_ready_description }}
+      </div>
+      
+      <div class="launch-ready-price-comparison">
+        <div class="launch-ready-price-comparison">
+          <div class="compared-at-price">
+            {{ shop.metaobjects.services['launch-ready'].price | plus: section.settings.launch_ready_discount | money_without_trailing_zeros }}
+          </div>
+          <div class="discounted-price">
+            {{ shop.metaobjects.services['launch-ready'].price | money_without_trailing_zeros }}
+          </div>
+        </div>
+      </div>
+
+      {% if section.settings.launch_ready_price_comment != blank %}
+        <div class="launch-ready-price-comment">
+          {{ section.settings.launch_ready_price_comment }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.launch_ready_cta_text != blank %}
+        <a href="{{ section.settings.launch_ready_cta_url }}">
+          <button class="button">
+            {{ section.settings.launch_ready_cta_text }} <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+          </button>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+    
+</section>
+
+{% schema %}
+  {
+    "name": "Service Pricing",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Pricing description",
+        "default": "<p>We use Contra for payments to keep things simple and buttery smooth. Here’s how it works: you pay a 50% non-refundable deposit to start, and the remainder is split into milestones. Make sure to pay before each milestone is submitted. Your money is safely held in escrow until the goods are delivered. </p>"
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA Text",
+        "default": "Get Started"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "floating_img1",
+        "label": "Left floating image"
+      },
+      {
+        "type": "image_picker",
+        "id": "floating_img2",
+        "label": "Right floating image"
+      },
+      {
+        "type": "text",
+        "id": "launch_ready_title",
+        "label": "Launch ready title",
+        "default": "Get Launch Ready"
+      },
+      {
+        "type": "number",
+        "id": "launch_ready_discount",
+        "label": "Launch ready discount",
+        "info": "Price in cents",
+        "default": 200000
+      },
+      {
+        "type": "richtext",
+        "id": "launch_ready_description",
+        "label": "Launch ready description",
+        "default": "<p>In a rush? Have your branding, web design, email, and social media set up in 12 weeks – bold, beautiful, and right there when you need it! Great for anyone facing tight deadlines or needing an extra push.</p>"
+      },
+      {
+        "type": "text",
+        "id": "launch_ready_price_comment",
+        "label": "Launch ready Price comment",
+        "default": "*Payment plans available"
+      },
+      {
+        "type": "text",
+        "id": "launch_ready_cta_text",
+        "label": "Launch ready CTA Text",
+        "default": "Get Launch Ready"
+      },
+      {
+        "type": "url",
+        "id": "launch_ready_cta_url",
+        "label": "Launch ready CTA URL"
+      },
+      {
+        "type": "color",
+        "id": "hover_bg_color",
+        "label": "Card Hover Background Color",
+        "default": "#058AE5"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "launch-ready-card",
+        "name": "Launch Ready Card",
+        "settings": [
+          {
+            "type": "text",
+            "id": "headline",
+            "label": "Headline",
+            "default": "Headline"
+          },
+          {
+            "type": "richtext",
+            "id": "body",
+            "label": "Body",
+            "default": "<p>lorem ipsum</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "hover_image",
+            "label": "Hover Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Service Pricing"
+      }
+    ]
+  }
+{% endschema %}

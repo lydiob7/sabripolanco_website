@@ -1,0 +1,282 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: 40px;
+  }
+
+  #section-{{ section.id }} {
+      max-width: 100vw;
+      overflow-x: hidden;
+  }
+  #section-{{ section.id }} .meet_sabri_container {
+    max-width: 1440px;
+  }
+  #section-{{ section.id }} .images_container {
+      position: relative;
+      height: 275px;
+      width: 100%;
+  }
+  #section-{{ section.id }} .about_img {
+      position: absolute;
+      object-fit: contain;
+  }
+  #section-{{ section.id }} .about_img1 {
+      height: 130%;
+      width: 85%;
+      left: -20%;
+      top: -25%;
+      z-index: 1;
+  }
+  #section-{{ section.id }} .about_img2 {
+      height: 185px;
+      width: 209px;
+      bottom: -10%;
+      right: 0;
+        z-index: 3;
+  }
+  #section-{{ section.id }} .about_img3 {
+      height: 120px;
+      width: 180px;
+      top: 4rem;
+      right: 0;
+      object-fit: cover;
+      transform: rotate(-7deg);
+      z-index: 2;
+  }
+  #section-{{ section.id }} .text_content {
+    padding: 4rem 2rem 2rem 2rem;
+    color: black;
+  }
+  #section-{{ section.id }} .supra_title {
+    font-family: "Suisse Intl";
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #section-{{ section.id }} .section_heading {
+      font-size: 60px;
+      margin: 0;
+  }
+  #section-{{ section.id }} .section_heading em {
+      font-familty: "SeriouslyNostalgic Fn It";
+  }
+  #section-{{ section.id }} .section_description {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px + 740px - 45vw);
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #section-{{ section.id }} .meet_sabri_container {
+      position: relative;
+      height: 90vh;
+  }
+  #section-{{ section.id }} .images_container {
+      position: absolute;
+      height: 100%;
+  }
+  #section-{{ section.id }} .about_img1 {
+      height: 110%;
+      left: -25%;
+      top: auto;
+      bottom: 0;
+  }
+  #section-{{ section.id }} .about_img2 {
+      height: 320px;
+      width: 400px;
+      bottom: -10%;
+      right: 30%;
+  }
+  #section-{{ section.id }} .about_img3 {
+      height: 280px;
+      width: 480px;
+      top: auto;
+      bottom: -5%;
+      right: -5%;
+  }
+  #section-{{ section.id }} .text_content {
+      padding: 2rem;
+      max-width: 44vw;
+      position: relative;
+      left: 52%;
+      top: calc(-800px + 45vw);
+  }
+}
+
+@media screen and (min-height: 1100px) {
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px + 460px - 45vw);
+  }
+  #section-{{ section.id }} .about_img1 {
+    height: 65%;
+    width: auto;
+    left: -25%;
+    top: auto;
+    bottom: 0;
+  }
+  #section-{{ section.id }} .text_content {
+    top: calc(-500px + 45vw);
+    left: 55%;
+  }
+}
+
+@media screen and (min-height: 1100px) and (min-width: 990px) {
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px + 560px - 45vw);
+  }
+  #section-{{ section.id }} .meet_sabri_container {
+      height: 60vh;
+  }
+  #section-{{ section.id }} .about_img1 {
+    height: 95%;
+  }
+  #section-{{ section.id }} .text_content {
+    top: calc(-600px + 45vw);
+  }
+}
+  
+@media screen and (min-width: 1100px) {
+  .section-{{ section.id }}-padding {
+      padding-top: calc({{ section.settings.padding_top }}px + 140px);
+    }
+   #section-{{ section.id }} .meet_sabri_container {
+        height: 100vh;
+    }
+    #section-{{ section.id }} .about_img1 {
+        height: 120%;
+        bottom: -10%;
+    }
+    #section-{{ section.id }} .about_img2 {
+        height: 450px;
+        width: 500px;
+        bottom: -12%;
+        right: 32%;
+    }
+    #section-{{ section.id }} .about_img3 {
+        height: 380px;
+        width: 600px;
+        bottom: -8%;
+        right: -3%;
+    }
+    #section-{{ section.id }} .text_content {
+      max-width: min(550px, 45vw);
+      top: -180px;
+    }
+  }
+
+  @media screen and (min-height: 990px) and (min-width: 1100px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+    }
+    #section-{{ section.id }} .text_content {
+      top: 0;
+    }
+  }
+{%- endstyle -%}
+<div id="section-{{ section.id }}" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <main class="meet_sabri_container">
+      <div class="images_container">
+        <img
+          class="about_img about_img1"
+          src="https://cdn.shopify.com/s/files/1/0651/3616/5055/files/about-sabri.png?v=1718892787"
+          alt="Sabri collage"
+          width="597"
+          height="512"
+        >
+        <img
+          class="about_img about_img2"
+          src="https://cdn.shopify.com/s/files/1/0651/3616/5055/files/about-sabri-2.png?v=1718893118"
+          alt="Sabri collage"
+          width="512"
+          height="483"
+        >
+        <img
+          class="about_img about_img3"
+          src="https://cdn.shopify.com/s/files/1/0651/3616/5055/files/about-sabri-3.jpg?v=1718893117"
+          alt="Sabri collage"
+          width="1125"
+          height="1230"
+        >
+      </div>
+      <div class="text_content">
+        {% if section.settings.sub_head != blank %}
+          <div class="supra_title">{{ section.settings.sub_head }}</div>
+        {% endif %}
+        {% if section.settings.headline != blank %}
+          <h2 class="section_heading">{{ section.settings.headline }}</h2>
+        {% endif %}
+        {% if section.settings.body != blank %}
+          <div class="section_description">{{ section.settings.body }}</div>
+        {% endif %}
+      </div>
+    </main>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Meet Sabri",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_head",
+      "label": "Sub head",
+      "default": "FOUNDER & CREATIVE DIRECTOR"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Meet <em>Sabri</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Hi there! I like to think that I'm part of a new wave of designers. Those who believe in the power of mindful and strategic design for positive change. A rebel with a cause. A celebration of wellness for all. I blend agency expertise and the spirit of a creative to craft bold, authentic brand experiences that grow loyal communities and embrace joy.</p><p>My approach? A dash of play, empathy, and a whole lot of purpose. I partner with brands who genuinely care - especially founders from BIPOC, Latinx, or LGBTQIA+ communities - to bring their visions to life in vibrant color.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Meet Sabri"
+    }
+  ]
+}
+{% endschema %}

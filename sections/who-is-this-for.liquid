@@ -1,0 +1,228 @@
+<style>
+  #section-{{ section.id }} {
+    padding: 40px 0 60px 0;
+    border-bottom: 1px solid black;
+  }
+  #section-{{ section.id }} .inner-container {
+    max-width: 1250px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: grid;
+    gap: 4rem;
+  }
+  #section-{{ section.id }} .image-wrapper {
+    grid-row: 2/3;
+    margin-left: -1rem;
+    width: 100%;
+  }
+  #section-{{ section.id }} .image-wrapper img {
+    width: 100%;
+    object-fit: scale-down;
+    height: max-content;
+  }
+  #section-{{ section.id }} .content-wrapper {
+    grid-row: 1/2;
+  }
+  #section-{{ section.id }} .sub-head {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #section-{{ section.id }} .headline {
+    font-size: 60px;
+    line-height: 1;
+    margin: 1rem 0 2rem 0;
+  }
+  #section-{{ section.id }} .description {
+    font-size: 18px;
+  }
+  #section-{{ section.id }} .audience-wrapper {
+    padding: 2rem 0;
+  }
+  #section-{{ section.id }} .audience-item:last-child {
+    border-bottom: 1px solid black;
+  }
+  #section-{{ section.id }} .audience-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-top: 1px solid black;
+    cursor: pointer;
+  }
+  #section-{{ section.id }} .dot-icon {
+    height: 20px;
+    width: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  #section-{{ section.id }} .audience-title {
+    font-family: "Suisse Intl";
+    font-size: 14px;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 500;
+    flex: 1;
+  }
+  #section-{{ section.id }} .minus-icon {
+    display: none;
+  }
+  #section-{{ section.id }} .audience-item.open .plus-icon {
+    display: none;
+  }
+  #section-{{ section.id }} .audience-item.open .minus-icon {
+    display: block;
+  }
+  #section-{{ section.id }} .audience-body {
+    max-height: 0;
+    overflow: hidden;
+    font-size: 16px;
+    transition: max-height .3s ease;
+  }
+  #section-{{ section.id }} .audience-body-padding {
+    padding: 1rem;
+  }
+  #section-{{ section.id }} .audience-item.open .audience-body {
+    max-height: 100vh;
+    overflow: auto;
+  }
+  #section-{{ section.id }} .button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 750px) {
+    #section-{{ section.id }} {
+      padding: 80px 0;
+    }
+    #section-{{ section.id }} .inner-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 120px;
+    }
+    #section-{{ section.id }} .image-wrapper {
+      grid-row: 1/2;
+    }
+    #section-{{ section.id }} .image-wrapper img {
+      height: 100%;
+    }
+    #section-{{ section.id }} .headline {
+      font-size: 80px;
+    }
+    #section-{{ section.id }} .audience-wrapper {
+      padding: 2rem 0 4rem 0;
+    }
+    #section-{{ section.id }} .button {
+      margin: 0;
+    }
+  }
+</style>
+
+<section id="section-{{ section.id }}">
+  <div class="inner-container">
+    <div class="image-wrapper">
+      {% if metaobject.who_is_this_for.value.image != blank %}
+        <img src="https://{{ metaobject.who_is_this_for.value.image.value.src | image_url }}" alt="{{ metaobject.who_is_this_for.value.image.value.alt }}" width="{{ metaobject.who_is_this_for.value.image.value.width }}" height="{{ metaobject.who_is_this_for.value.image.value.height }}" />
+      {% endif %}
+    </div>
+
+    <div class="content-wrapper">
+      {% if section.settings.sub_head != blank %}
+        <div class="sub-head">{{ section.settings.sub_head }}</div>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        <h2 class="headline">{{ section.settings.headline }}</h2>
+      {% endif %}
+      {% if metaobject.who_is_this_for.value.description != blank %}
+        <div class="description">
+          {{ metaobject.who_is_this_for.value.description | metafield_tag }}
+        </div>
+      {% endif %}
+      {% if metaobject.who_is_this_for.value.audience.value %}
+        <div class="audience-wrapper">
+          {% for audience in metaobject.who_is_this_for.value.audience.value %}
+            <div class="audience-item">
+              <div class="audience-title-wrapper">
+                <svg class="dot-icon" width="32" height="31" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.9 30.96L13.9 23.04L8.22 28.88L10.38 21.04L2.54 23.2L8.38 17.52L0.54 15.52L8.38 13.44L2.54 7.76L10.38 9.92L8.22 2.16L13.9 7.92L15.9 0.079999L17.98 7.92L23.66 2.16L21.5 9.92L29.34 7.76L23.5 13.44L31.34 15.52L23.5 17.52L29.34 23.2L21.5 21.04L23.66 28.88L17.98 23.04L15.9 30.96Z" fill="black"/>
+                </svg>
+                <h3 class="audience-title">{{ audience.question }}</h3>
+                <svg class="plus-icon" width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.49 7.5V4.504H0.396V3.006H3.49V-0.00400019H5.03V3.006H8.11V4.504H5.03V7.5H3.49Z" fill="black"/>
+                </svg>
+                <svg class="minus-icon" width="9" height="2" viewBox="0 0 13 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.114531 3.76V0.32H12.8345V3.76H0.114531Z" fill="black"/>
+                </svg>
+  
+              </div>
+              <div class="audience-body">
+                <div class="audience-body-padding">
+                  {{ audience.answer | metafield_tag }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if section.settings.cta_text %}
+        <a href="{{ section.settings.cta_url }}">
+          <button class="button">
+            {{ section.settings.cta_text }} <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+          </button>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% javascript %}
+  const audienceItems = [...document.querySelectorAll(".audience-item")];
+
+  audienceItems.forEach(item => {
+    const title = item.querySelector(".audience-title-wrapper");
+    title.addEventListener("click", ev => {
+      item.classList.toggle("open");
+    })
+  })
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Who is this for",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub_head",
+        "label": "Sub head",
+        "default": "The Perfect Fit"
+      },
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline",
+        "default": "Who’s This For?"
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA Text",
+        "default": "Get Started"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Who is this for"
+      }
+    ]
+  }
+{% endschema %}

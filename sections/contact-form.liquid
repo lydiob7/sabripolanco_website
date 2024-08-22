@@ -1,0 +1,410 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .page-width--narrow {
+      max-width: min(90vw,1240px)!important;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+    {%- if section.settings.supra_title != blank -%}
+      <p class="supra_title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.supra_title }}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- else -%}
+      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
+    {%- endif -%}
+    {%- if section.settings.sub_title != blank -%}
+      <p class="sub_title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.sub_title }}
+      </p>
+    {%- endif -%}
+
+    {% if section.settings.separator_img != blank %}
+      <img class="separator-img" src="https:{{ section.settings.separator_img.src | image_url }}" alt="{{ section.settings.separator_img.alt }}" width="section.settings.separator_img.width" height="{{ section.settings.separator_img.height }}" />
+    {% endif %}
+    
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+    -%}
+    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      {%- if form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {% render 'icon-error' %}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+      <div class="contact__fields">
+        <p class="field-group-title">Contact info</p>
+        
+        <div class="field">
+          <input
+            class="field__input"
+            autocomplete="name"
+            type="text"
+            id="ContactForm-first_name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.first_name %}{{ form.first_name }}{% elsif customer %}{{ customer.first_name }}{% endif %}"
+            placeholder="{{ 'templates.contact.form.name' | t }}"
+            required="true"
+          >
+          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }} <span aria-hidden="true">*</span></label>
+        </div>
+        <div class="field">
+          <input
+            class="field__input"
+            type="text"
+            id="ContactForm-last_name"
+            name="contact[last_name]"
+            value="{% if form.last_name %}{{ form.last_name }}{% elsif customer %}{{ customer.last_name }}{% endif %}"
+            placeholder="Last"
+            required="true"
+          >
+          <label class="field__label" for="ContactForm-last_name">Last <span aria-hidden="true">*</span></label>
+        </div>
+
+        <div class="field">
+          <input
+            id="ContactForm-pronouns"
+            class="field__input"
+            name="contact[pronouns]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.pronouns %}{{ form.pronouns }}{% elsif customer %}{{ customer.pronouns }}{% endif %}"
+            placeholder="Pronons"
+            required="true"
+          >
+          <label class="field__label" for="ContactForm-pronouns">
+            Pronouns
+            <span aria-hidden="true">*</span></label
+          >
+        </div>
+        <div class="field field--with-error">
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+            placeholder="{{ 'templates.contact.form.email' | t }}"
+          >
+          <label class="field__label" for="ContactForm-email">
+            {{- 'templates.contact.form.email' | t }}
+            <span aria-hidden="true">*</span></label
+          >
+          {%- if form.errors contains 'email' -%}
+            <small class="contact__field-error" id="ContactForm-email-error">
+              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+              <span class="form__message">
+                {%- render 'icon-error' -%}
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </span>
+            </small>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="contact__fields">
+        <p class="field-group-title">The project</p>
+        
+        <div class="field">
+          <input
+            class="field__input"
+            type="text"
+            id="ContactForm-brand_name"
+            name="contact[brand_name]"
+            value="{% if form.brand_name %}{{ form.brand_name }}{% elsif customer %}{{ customer.brand_name }}{% endif %}"
+            placeholder="Brand name"
+            required="true"
+          >
+          <label class="field__label" for="ContactForm-brand_name">Brand Name <span aria-hidden="true">*</span></label>
+        </div>
+        <div class="field">
+          <input
+            class="field__input"
+            type="text"
+            id="ContactForm-website"
+            name="contact[website]"
+            value="{% if form.website %}{{ form.website }}{% elsif customer %}{{ customer.website }}{% endif %}"
+            placeholder="Website/Instagram"
+            required="true"
+          >
+          <label class="field__label" for="ContactForm-website">Website/Instagram <span aria-hidden="true">*</span></label>
+        </div>
+        <div class="field">
+          <div class="select">
+            <select
+              class="field__input select__input"
+              type="text"
+              id="ContactForm-budget"
+              name="contact[budget]"
+              required="true"
+            >
+              <option class="field__label" selected disabled>Budget <span aria-hidden="true">*</span></option>
+              <option class="field__label" value="5/10">$5k-$10k</option>
+              <option class="field__label" value="10/20">$10k-$20k</option>
+              <option class="field__label" value="25/50">$25k-$50k</option>
+            </select>
+            <svg class="icon-caret" aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+              <use href="#icon-caret" />
+            </svg>
+          </div>
+        </div>
+        <div class="field">
+          <input
+            class="field__input"
+            type="text"
+            id="ContactForm-start_date"
+            name="contact[start_date]"
+            value="{% if form.start_date %}{{ form.start_date }}{% elsif customer %}{{ customer.start_date }}{% endif %}"
+            placeholder="Start Date"
+            required="true"
+          >
+          <label class="field__label" for="ContactForm-start_date">Start Date <span aria-hidden="true">*</span></label>
+        </div>
+      </div>
+      
+      <div class="comment-field">
+        <label class="" for="ContactForm-body">
+          Tell us about your project or brand <span aria-hidden="true">*</span>
+        </label>
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          placeholder="{{ 'templates.contact.form.comment' | t }}"
+        >
+          {{- form.body -}}
+        </textarea>
+      </div>
+
+      <p class="field-group-title">Services</p>
+      <p class="field-group-description">Select all that apply</p>
+      <div class="services-select-wrapper">
+        <div class="services-select" id="services">
+            <label class="services-option"><input type="checkbox" name="services" value="brand-strategy"><span>Brand Strategy</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="visual-identity"><span>Visual Identity</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="web-design"><span>Web Design</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="social-media"><span>Social Media</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="email-design"><span>Email Design</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="messaging"><span>Messaging</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="naming"><span>Naming</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="packaging-design"><span>Packaging Design</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="art-direction"><span>Art Direction</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="web-development"><span>Web Development</span></label>
+            <label class="services-option"><input type="checkbox" name="services" value="marketing"><span>Marketing</span></label>
+        </div>
+      </div>
+      
+      <p class="field-group-title" style="margin-bottom:0;">existing assets</p>
+      <div class="comment-field">
+        <label class="assets-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
+          Share any photography, pitch decks, logos, inspiration, or any other relevant materials! Just provide a link to your files on Box or Google Drive
+        </label>
+        <textarea
+          rows="10"
+          id="ContactForm-assets"
+          class="text-area field__input"
+          name="contact[assets]"
+          placeholder="Assets"
+        >
+        </textarea>
+      </div>
+
+      <div class="contact__fields">        
+        <div>
+          <p class="field-group-title-small">Vibe check</p>
+          <p style="margin-top:0;">What type of designer are you looking to hire?</p>
+          <div class="field">
+            <div class="select">
+              <select
+                class="field__input select__input"
+                type="text"
+                id="ContactForm-vibe_check"
+                name="contact[vibe_check]"
+                required="true"
+              >
+              <option class="field__label" selected disabled>Select an Option <span aria-hidden="true">*</span></option>
+              <option class="field__label" value="partner">A partner I can trust for their expertise </option>
+              <option class="field__label" value="executor">I know what I want, I just need someone to execute it </option>
+              </select>
+              <svg class="icon-caret" aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                <use href="#icon-caret" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="field-group-title-small">How did you hear about us?</p>
+          <p style="margin-top:0;">We’d love to thank them!</p>
+          <div class="field">
+            <input
+              class="field__input"
+              type="text"
+              id="ContactForm-how_did_you_hear_about_us"
+              name="contact[how_did_you_hear_about_us]"
+              value="{% if form.how_did_you_hear_about_us %}{{ form.how_did_you_hear_about_us }}{% elsif customer %}{{ customer.how_did_you_hear_about_us }}{% endif %}"
+              placeholder="Behance, a friend, Contra, instagram,  etc"
+              required="true"
+            >
+            <label class="field__label" for="ContactForm-how_did_you_hear_about_us">Behance, a friend, Contra, instagram,  etc* <span aria-hidden="true">*</span></label>
+          </div>
+        </div>
+      </div>
+
+      <p class="field-group-title-small" style="text-align:center;">Let's be friends</p>
+      <div style="width:100%;display:grid;place-items:center">
+        <label style="display:flex;align-items:center;"><input type="checkbox"><span style="margin-left: 10px" id="ContactForm-subscribe" name="contact[subscribe]">Sign up for creative goodness and exclusive discounts straight to your inbox!</span></label>
+      </div>
+      
+      <div class="contact__button">
+        <button type="submit" class="button">
+          Apply to Book {% render 'icon-arrow' →%}
+        </button>
+      </div>
+      {%- if form.posted_successfully? -%}
+        <script>
+          window.location = "https://sabrinapolanco.co/pages/inquiry-confirmationn";
+        </script>
+        <h3
+          class="newsletter-form__message newsletter-form__message--success form__message"
+          id="Newsletter-success--{{ section.id }}"
+          tabindex="-1"
+          autofocus
+        >
+          {% render 'icon-success' -%}
+          {{- 'newsletter.success' | t }}
+        </h3>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "label": "Supra title",
+      "id": "supra_title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "label": "Subtitle",
+      "id": "sub_title"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "image_picker",
+      "label": "Separator image",
+      "id": "separator_img"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

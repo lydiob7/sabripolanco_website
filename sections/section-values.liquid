@@ -1,0 +1,357 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .our-values_section {
+    border-bottom: 1px solid #000000;
+  }
+  .our-values_section .container {
+    width: 100%;
+    padding: 0;
+  }
+  .our-values_section .values_row {
+    border-top: 1px solid #000000;
+    width: 100%;
+  }
+  .our-values_section .values_column {
+    width: 100%;
+    padding: 10px 2rem;
+  }
+  .our-values_section .values_column .value_heading-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .our-values_section .values_column:first-child {
+    border-bottom: 1px solid #000000;
+  }
+  .our-values_section .values_row:first-child .values_column:first-child {
+    border-bottom: none;
+  }
+  .our-values_section .section_title {
+    font-family: 'Suisse Intl';
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+  }
+  .our-values_section .values_numeration {
+    align-self: flex-start;
+    font-family: 'Suisse Intl';
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .our-values_section .section_heading {
+    font-family: 'Suisse Intl';
+    font-size: 24px;
+    line-height: 1.2;
+    text-transform: none;
+    flex: 1 1 100%;
+    margin: 10px;
+    letter-spacing: 0;
+  }
+  .our-values_section .minus-icon {
+    display: none;
+  }
+  .our-values_section .values_column.open .minus-icon {
+    display: block;
+  }
+  .our-values_section .values_column.open .plus-icon {
+    display: none;
+  }
+  .our-values_section .minus-icon,
+  .our-values_section .plus-icon {
+    width: 20px;
+    height: auto;
+  }
+  .our-values_section .value_body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  .our-values_section .values_column.open .value_body {
+    max-height: 100vh;
+    overflow: auto;
+  }
+  .our-values_section .value_body_inner {
+    padding: 30px 28px;
+  }
+
+  @media (min-width: 750px) {
+    .our-values_section .container {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .our-values_section .values_flex {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .our-values_section .values_column {
+      padding: 10px 32px;
+    }
+    .our-values_section .values_column:first-child {
+      border-right: 1px solid #000000;
+      border-bottom: none;
+    }
+    .our-values_section .values_row:first-child .values_column:first-child {
+      border-right: none;
+    }
+    .our-values_section .section_heading {
+      line-height: 1;
+    }
+  }
+  @media (min-width: 1100px) {
+    .our-values_section .section_heading {
+      font-size: 40px;
+    }
+  }
+</style>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <section class="our-values_section">
+      <div class="values_row">
+        <div class="container values_flex">
+          <div class="values_column">
+            <h2 class="section_title">Our values</h2>
+          </div>
+        </div>
+      </div>
+      <div class="values_row">
+        <div class="container values_flex">
+          <div class="values_column" data-value-id="1">
+            <div class="value_heading-wrapper">
+              <span class="values_numeration">01</span>
+              <h3 class="section_heading">{{ section.settings.value1_heading }}</h3>
+              <svg
+                class="plus-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M11.3947 8.48H19.3547V11.32H11.3947V19.56H8.51469V11.32H0.554688V8.48H8.51469V0.199999H11.3947V8.48Z" fill="black"/>
+              </svg>
+              <svg class="minus-icon" width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.114531 3.76V0.32H12.8345V3.76H0.114531Z" fill="black"/>
+              </svg>
+            </div>
+            <div class="value_body">
+              <div class="value_body_inner">
+                {{ section.settings.value1_body }}
+              </div>
+            </div>
+          </div>
+                  
+          <div class="values_column" data-value-id="2">
+            <div class="value_heading-wrapper">
+              <span class="values_numeration">02</span>
+              <h3 class="section_heading">{{ section.settings.value2_heading }}</h3>
+              <svg
+                class="plus-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M11.3947 8.48H19.3547V11.32H11.3947V19.56H8.51469V11.32H0.554688V8.48H8.51469V0.199999H11.3947V8.48Z" fill="black"/>
+              </svg>
+              <svg class="minus-icon" width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.114531 3.76V0.32H12.8345V3.76H0.114531Z" fill="black"/>
+              </svg>
+            </div>
+            <div class="value_body">
+              <div class="value_body_inner">
+                {{ section.settings.value2_body }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+                  
+      <div class="values_row">
+        <div class="container values_flex">
+          <div class="values_column" data-value-id="3">
+            <div class="value_heading-wrapper">
+              <span class="values_numeration">03</span>
+              <h3 class="section_heading">{{ section.settings.value3_heading }}</h3>
+              <svg
+                class="plus-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M11.3947 8.48H19.3547V11.32H11.3947V19.56H8.51469V11.32H0.554688V8.48H8.51469V0.199999H11.3947V8.48Z" fill="black"/>
+              </svg>
+              <svg class="minus-icon" width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.114531 3.76V0.32H12.8345V3.76H0.114531Z" fill="black"/>
+              </svg>
+            </div>
+            <div class="value_body">
+              <div class="value_body_inner">
+                {{ section.settings.value3_body }}
+              </div>
+            </div>
+          </div>
+                  
+          <div class="values_column" data-value-id="4">
+            <div class="value_heading-wrapper">
+              <span class="values_numeration">04</span>
+              <h3 class="section_heading">{{ section.settings.value4_heading }}</h3>
+              <svg
+                class="plus-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M11.3947 8.48H19.3547V11.32H11.3947V19.56H8.51469V11.32H0.554688V8.48H8.51469V0.199999H11.3947V8.48Z" fill="black"/>
+              </svg>
+              <svg class="minus-icon" width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.114531 3.76V0.32H12.8345V3.76H0.114531Z" fill="black"/>
+              </svg>
+            </div>
+            <div class="value_body">
+              <div class="value_body_inner">
+                {{ section.settings.value4_body }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% javascript %}
+  const valueElements = [...document.querySelectorAll("[data-value-id]")];
+  valueElements.forEach(elem => {
+    const titleWrapper = elem.querySelector(".value_heading-wrapper")
+    titleWrapper.addEventListener("click", ev => {
+      elem.classList.toggle("open")
+    })
+  })
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Our Values",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Value 1"
+    },
+    {
+      "type": "text",
+      "id": "value1_heading",
+      "label": "Heading",
+      "default": "Be Bold"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "value1_body",
+      "label": "Body",
+      "default": "Embrace the audacity to be different. Don’t be afraid to take up space and play. Together, we rebel against the mundane."
+    },
+    {
+      "type": "header",
+      "content": "Value 2"
+    },
+    {
+      "type": "text",
+      "id": "value2_heading",
+      "label": "Heading",
+      "default": "Live Authentic"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "value2_body",
+      "label": "Body",
+      "default": "Keep it real. Your people will find you and love you for it. Authenticity is the ultimate art. "
+    },
+    {
+      "type": "header",
+      "content": "Value 3"
+    },
+    {
+      "type": "text",
+      "id": "value3_heading",
+      "label": "Heading",
+      "default": "Welcome the Wellness"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "value3_body",
+      "label": "Body",
+      "default": "Wellness has no container. No labels. It’s welcome in all our lives. Everybody is worthy of feeling good."
+    },
+    {
+      "type": "header",
+      "content": "Value 4"
+    },
+    {
+      "type": "text",
+      "id": "value4_heading",
+      "label": "Heading",
+      "default": "Stay Captivating"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "value4_body",
+      "label": "Body",
+      "default": "Same Thing as the section above, I think we might want to revise the values so that they don’t only speak about us but also to show how that is meaningful/beneficial to our clients. Les about “me,” more about what I do for them! (But not too sales-y)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Values"
+    }
+  ]
+}
+{% endschema %}

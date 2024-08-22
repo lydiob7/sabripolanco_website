@@ -1,0 +1,402 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .services_section {
+    width: 100%;
+    overflow: hidden;
+    padding-left: 2rem;
+  }
+  .services_section .supra_title {
+    font-family: 'Suisse Intl';
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .services_section .section_title {
+    font-size: 60px;
+    margin: 0;
+    line-height: 1;
+  }
+  .services_section .section_title em {
+    font-family: 'SeriouslyNostalgic Fn It';
+  }
+  .services_section .section-description {
+    color: black;
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+  .services_section .button {
+      margin-top: 4rem;
+    }
+  .services_section .video_review {
+    display: none;
+  }
+  .services_section .services_list {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 10px;
+  }
+  .services_section .services_list > * {
+    scroll-snap-align: start;
+  }
+  .services_section .services_list .card_link {
+    text-decoration: none;
+    color: inherit;
+  }
+  .services_section .service_card {
+    display: grid;
+    gap: 1rem;
+  }
+  .services_section .service_card .card_image {
+    position: relative;
+    height: 357px;
+    width: 250px;
+  }
+  .services_section .service_card .card_image img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .services_section .service_card .main_card_image {
+    border-radius: 22px;
+  }
+  .services_section .service_card .hover_card_image {
+    opacity: 0;
+    border-radius: 50%;
+  }
+  .services_section .service_card:hover .main_card_image {
+    opacity: 0;
+  }
+  .services_section .service_card:hover .hover_card_image {
+    opacity: 1;
+  }
+  .services_section .service_card .index_tag,
+  .services_section .service_card .arrow_tag {
+    font-family: 'PP NeueBit';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    position: absolute;
+    z-index: 2;
+    background-color: #ffffff;
+    border-radius: 100px;
+  }
+  .services_section .service_card:hover .index_tag,
+  .services_section .service_card:hover .arrow_tag {
+    display: none;
+  }
+  .services_section .service_card .index_tag {
+    padding: 5px 20px;
+    top: 1rem;
+    left: 1rem;
+  }
+  .services_section .service_card .arrow_tag {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .services_section .card_tag {
+    font-family: 'PP NeueBit';
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 700;
+    border: 1px solid #000000;
+    border-radius: 100px;
+    padding: 4px 10px;
+    width: max-content;
+  }
+  .services_section .card_hover_tag {
+    text-transform: uppercase;
+    display: none;
+  }
+  .services_section .service_card .card_main_tag.capitalize {
+    text-transform: capitalize;
+  }
+  .services_section .service_card:hover .card_main_tag {
+    display: none;
+  }
+  .services_section .service_card:hover .card_hover_tag {
+    display: block;
+  }
+  .services_section .service_title {
+    margin: 0;
+    font-size: 44px;
+  }
+  .services_section .service_title_italics {
+    font-family: 'SeriouslyNostalgic Fn It';
+  }
+  .services_section .kind_words_card {
+    background-color: #058ae5;
+    color: #ffffff;
+    padding: 25px;
+    border-radius: 25px;
+    height: 100%;
+    width: 250px;
+    flex-shrink: 0;
+    font-size: 18px;
+    letter-spacing: 0;
+    height: max-content;
+  }
+  .services_section .kind_words_title {
+    font-family: 'Suisse Intl';
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .services_section .hide-on-mobile {
+    display: none;
+  }
+  .services_section .hide-on-desktop .button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .services_section .button:hover {
+    background-color: transparent;
+    color: #000000;
+    outline: 1px solid #000000;
+  }
+
+  .services_section .button:after,
+  .services_section .button:not([disabled]):hover:after {
+    box-shadow: none;
+  }
+  .services_section .kind_words_content {
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  @media (min-width: 750px) {
+    .services_section {
+      display: grid;
+      grid-template-columns: min(340px, calc(100vw - 450px)) auto;
+      gap: 2rem;
+      padding-left: max(2rem, calc(50vw - (90vw / 2)));
+    }
+    .services_section .section_title {
+      font-size: 100px;
+    }
+    .services_section .hide-on-mobile {
+      display: block;
+    }
+    .services_section .hide-on-desktop {
+      display: none;
+    }
+    .services_section .services_list {
+      height: 100%;
+    }
+  }
+  @media (min-width: 1100px) {
+    .services_section {
+      grid-template-columns: 330px auto;
+      padding-left: max(2rem, calc(50vw - (1250px / 2)));
+    }
+    .services_section .section_information {
+      width: 100%;
+    }
+    .services_section .video_review {
+      display: block;
+      width: 300px;
+    }
+  }
+</style>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <section class="services_section">
+      <div class="left-side_container">
+        <div class="section_information">
+          {% if section.settings.sub_head != blank %}
+            <span class="supra_title">{{ section.settings.sub_head }}</span>
+          {% endif %}
+          {% if section.settings.headline != blank %}
+            <h2 class="section_title">{{ section.settings.headline }}</h2>
+          {% endif %}
+          <svg width="32" height="31" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.9 30.96L13.9 23.04L8.22 28.88L10.38 21.04L2.54 23.2L8.38 17.52L0.54 15.52L8.38 13.44L2.54 7.76L10.38 9.92L8.22 2.16L13.9 7.92L15.9 0.079999L17.98 7.92L23.66 2.16L21.5 9.92L29.34 7.76L23.5 13.44L31.34 15.52L23.5 17.52L29.34 23.2L21.5 21.04L23.66 28.88L17.98 23.04L15.9 30.96Z" fill="black"/>
+          </svg>
+          {% if section.settings.body != blank %}
+            <p class="section-description">{{ section.settings.body }}</p>
+          {% endif %}
+          {% if section.settings.cta_text != blank %}
+            <a class="hide-on-mobile" href="/pages/services">
+              <button class="button">
+                {{ section.settings.cta_text }}<span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+              </button>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="services_list">
+        <video autoplay muted playsinline loop controls class="video_review">
+          <source src="https://cdn.shopify.com/videos/c/o/v/7f3a843230d64456b87b8097e5aa8124.mp4" type="video/mp4">
+        </video>
+        {% assign sorted_services = shop.metaobjects.services.values | sort_natural: 'sort_order_letter' %}
+        {% for service in sorted_services %}
+          <{% if service.coming_soon %}div{% else %}a{% endif %}
+            class="card_link"
+            {% unless service.coming_soon %}
+              href="{% if service.subtitle != 'coming soon' %}{{ service.system.url }}{% else %}#{% endif %}"
+            {% endunless %}
+          >
+            <div class="service_card">
+              <div class="card_image">
+                <img
+                  class="main_card_image"
+                  src="{{ service.featured_image.value.src | image_url }}"
+                  alt="{{ service.featured_image.value.alt | escape }}"
+                  width="{{ service.featured_image.value.width }}"
+                  height="{{ service.featured_image.height }}"
+                >
+                {% if service.hover_image.value != blank %}
+                  <img
+                    class="hover_card_image"
+                    src="{{ service.hover_image.value.src | image_url }}"
+                    alt="{{ service.hover_image.value.alt | escape }}"
+                    width="{{ service.hover_image.value.width }}"
+                    height="{{ service.hover_image.height }}"
+                  >
+                {% else %}
+                  <img
+                    class="hover_card_image"
+                    src="{{ service.featured_image.value.src | image_url }}"
+                    alt="{{ service.featured_image.value.alt | escape }}"
+                    width="{{ service.featured_image.value.width }}"
+                    height="{{ service.featured_image.height }}"
+                  >
+                {% endif %}
+                <div class="index_tag">
+                  {%- if forloop.index <= 9 %}
+                    {{ forloop.index | prepend: "0" }}
+                {% else %}
+                    {{ forloop.index }}
+                {% endif %}
+                </div>
+                <div class="arrow_tag">{% render 'icon-arrow' → %}</div>
+              </div>
+              <div class="card_tags">
+                {% if service.subtitle != 'coming soon' %}
+                  <div class="card_tag card_main_tag">Availability Open</div>
+                {% else %}
+                  <div class="card_tag card_main_tag capitalize">{{ service.subtitle }}</div>
+                {% endif %}
+                <div class="card_tag card_hover_tag">{{ service.subtitle }}</div>
+              </div>
+              <h3 class="service_title">
+                {%- assign title_words = service.title | split: ' ' -%}
+                {% for word in title_words -%}
+                  {% if forloop.last and forloop.length != 1 %}
+                    <i class="service_title_italics">{{ word }}</i>
+                  {% else %}
+                    {{ word }}
+                  {%- endif -%}
+                {%- endfor %}
+              </h3>
+            </div>
+          </{% if service.coming_soon %}div{% else %}a{% endif %}>
+        {% endfor %}
+
+        <div class="kind_words_card">
+          <div class="kind_words_title">Kind words</div>
+          <p class="kind_words_content">
+            I LOVED working with Sabrina - I can't recommend her enough - everything has been amazing - her creativity,
+            attention to detail, positive attitude and a super fresh view on everything. I'm already working on next
+            projects with her!
+          </p>
+          <div class="kind_words_author">Ania, Founder & CEO</div>
+          <div class="kind_words_company">June Sky</div>
+        </div>
+      </div>
+      <a class="hide-on-desktop" href="/pages/services">
+        <button class="button">
+          View all<span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+        </button>
+      </a>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Services",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_head",
+      "label": "Sub head",
+      "default": "THE STUDIO"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Our <em>Services</em>"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "Embracing the audacity to be different, we bring brands to life in bold. "
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "See All Services"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services"
+    }
+  ]
+}
+{% endschema %}

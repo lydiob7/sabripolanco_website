@@ -1,0 +1,412 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  body {
+    background-color: {{ section.settings.background_color }}!important;
+  }
+
+  .page-wrapper {
+    position: relative;
+    width: 100%;
+    background-image: url({{ section.settings.background_image | image_url }})!important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .page-wrapper:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: linear-gradient({{ section.settings.image_overlay }});
+      opacity: {{ section.settings.overlay_opacity }};
+      pointer-events: none;
+  }
+
+  .subscription-confirmation-page {
+    display: grid;
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20vh 1.5rem 10vh 1.5rem;
+  }
+
+  .banner__heading {
+    margin: 0;
+    color: #ffffff;
+  }
+
+  .floating-image-left,
+  .floating-image-right {
+    position: absolute;
+    z-index: 1;
+    width: 110px;
+    height: 110px;
+  }
+  
+  .floating-image-left {
+    bottom: 4rem;
+    left: 1rem;
+  }
+  
+  .floating-image-right {
+    top: 6rem;
+    right: 1rem;
+  }
+
+  .floating-img-animation {
+    animation: bounce 3s ease-in-out infinite;
+  }
+  .button--primary {
+    text-decoration: underline!important;
+    background-color: transparent;
+  }
+  .icon-link {
+    display: block;
+  }
+
+  .icon-link img {
+    height: 56px;
+    width: 56px;
+    object-fit: scale-down;
+  }
+  @media screen and (min-width: 750px) {
+    .banner__content {
+      padding: 0;
+      padding-top: 84px;
+    }
+    .floating-image-left,
+    .floating-image-right {
+      position: absolute;
+      z-index: 1;
+      width: 244px;
+      height: 244px;
+    }
+    .floating-image-left {
+      bottom: 4rem;
+      left: -25%;
+      animation-delay: 1s;
+    }
+    .floating-image-right {
+      top: 4rem;
+      right: -45%;
+    }
+  }
+
+  @keyframes bounce {
+    0, 100% { transform: translateY(0); }
+    50% {
+      transform: translateY(30px);
+    }
+  }
+  
+{%- endstyle -%}
+
+<div class="page-wrapper">
+  <div class="subscription-confirmation-page page-width page-width--narrow section-{{ section.id }}-padding">
+    
+      {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'floating-images' -%}
+              {% if block.settings.floating_img_left != blank %}
+                <img class="floating-image-left{% if block.settings.floating_images_animation %} floating-img-animation{% endif %}" src="https:{{ block.settings.floating_img_left.src | image_url }}" alt="{{ block.settings.floating_img_left.alt }}" width="block.settings.floating_img_left.width" height="{{ block.settings.floating_img_left.height }}" />
+              {% endif %}
+              {% if block.settings.floating_img_right != blank %}
+                <img class="floating-image-right{% if block.settings.floating_images_animation %} floating-img-animation{% endif %}" src="https:{{ block.settings.floating_img_right.src | image_url }}" alt="{{ block.settings.floating_img_right.alt }}" width="{{ block.settings.floating_img_right.width }}" height="{{ block.settings.floating_img_right.height }}" />
+              {% endif %}
+            {%- when 'heading' -%}
+              <h2
+                class="banner__heading inline-richtext {{ block.settings.heading_size }}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.heading }}
+              </h2>
+            {%- when 'text' -%}
+              <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            {%- when 'buttons' -%}
+              <div
+                class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.button_label_1 != blank -%}
+                  <a
+                    {% if block.settings.button_link_1 == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_1 }}"
+                      target="_blank"
+                      rel="nofollow"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
+                  >
+                    {{- block.settings.button_label_1 | escape -}}
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.button_label_2 != blank -%}
+                  <a
+                    {% if block.settings.button_link_2 == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_2 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                  >
+                    {{- block.settings.button_label_2 | escape -}}
+                  </a>
+                {%- endif -%}
+              </div>
+  
+            {% when 'icon-button' %}
+              {% if block.settings.icon_link != blank %}
+                <a class="icon-link" href="{{ block.settings.icon_link }}" target="_blank" rel="nofollow">
+                  {% if block.settings.icon_image != blank %}
+                    <img src="https:{{ block.settings.icon_image.src | image_url }}" alt="{{ block.settings.icon_image.alt }}" width="{{ block.settings.icon_image.width }}" height="{{ block.settings.icon_image.height }}" />
+                  {% else %}
+                    <div>Insert an icon here</div>
+                  {% endif %}
+                </a>
+              {% else %}
+                <div class="icon-link">
+                   {% if block.settings.icon_image != blank %}
+                    <img src="https:{{ block.settings.icon_image.src | image_url }}" alt="{{ block.settings.icon_image.alt }}" width="{{ block.settings.icon_image.width }}" height="{{ block.settings.icon_image.height }}" />
+                  {% else %}
+                    <div>Insert an icon here</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+          {%- endcase -%}
+        {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color_background",
+      "id": "image_overlay",
+      "label": "Image overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.3
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.image-banner.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Image banner",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.image-banner.blocks.text.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "Give customers details about the banner image(s) or content on the template.",
+          "label": "t:sections.image-banner.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "caption-with-letter-spacing",
+              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__3.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.image-banner.blocks.text.settings.text_style.label"
+        }
+      ]
+    },
+    {
+      "type": "floating-images",
+      "name": "Floating images",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "floating_img_left",
+          "label": "Left floating image"
+        },
+        {
+          "type": "image_picker",
+          "id": "floating_img_right",
+          "label": "Right floating image"
+        },
+        {
+          "type": "checkbox",
+          "id": "floating_images_animation",
+          "label": "Images animation",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "icon-button",
+      "name": "Icon Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "url",
+          "id": "icon_link",
+          "label": "Icon link"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.image-banner.blocks.buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "default": "Button label",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary_1",
+          "default": false,
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_1.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "default": "Button label",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_2.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_2.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_2.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary_2",
+          "default": false,
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image-banner.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

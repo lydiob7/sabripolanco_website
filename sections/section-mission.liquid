@@ -1,0 +1,375 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .our-mission_section {
+    position: relative;
+  }
+  .our-mission_section .floating-phone {
+    position: absolute;
+    z-index: 1;
+    top: -20px;
+    right: 10px;
+    width: auto;
+    height: 116px;
+  }
+  .our-mission_section .container {
+    max-width: min(90vw, 1250px);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .our-mission_section .supra_title {
+    font-family: 'Suisse Intl';
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+  }
+  .our-mission_section .heading_row {
+    position: relative;
+    display: flex;
+    margin: 10px 0;
+    width: 100%;
+  }
+  .our-mission_section .section_heading_wrapper {
+    color: #000000;
+  }
+  .our-mission_section .section_heading {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+  .our-mission_section .heading_first_row .section_heading {
+    max-width: 85vw;
+  }
+  .our-mission_section .chat-bubble-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 228px;
+    padding: 10px 24px 10px 10px;
+  }
+  .our-mission_section .chat-bubble {
+    position: absolute;
+    left: 0;
+    top:0;
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .our-mission_section .chat-bubble-text {
+    display: block;
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 12px;
+    max-width: 160px;
+  }
+  .our-mission_section .heading_second_row {
+    justify-content: flex-end;
+    padding-bottom: 24px;
+  }
+  .our-mission_section .heading_second_row .section_heading {
+    text-align: right;
+    max-width: 260px;
+  }
+  .our-mission_section .heading_third_row {
+    flex-direction: column;
+  }
+  .our-mission_section .heading_italics_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .our-mission_section .section_heading_italics {
+    font-family: 'SeriouslyNostalgic Fn It';
+    font-size: 40px;
+    line-height: 1.2;
+    text-transform: none;
+  }
+  .our-mission_section .image2 {
+    width: 50px;
+    height: auto;
+    object-fit: scale-down;
+  }
+  .our-mission_section .section_description {
+    font-size: 18px;
+    max-width: 450px;
+    line-height: 1.4;
+  }
+  .our-mission_section .button {
+    display: block;
+    margin: 0 auto;
+  }
+  .our-mission_section .button:hover {
+    background-color: transparent;
+    color: #000000;
+    outline: 1px solid #000000;
+  }
+
+  .our-mission_section .button:after,
+  .our-mission_section .button:not([disabled]):hover:after {
+    box-shadow: none;
+  }
+  @media (min-width: 750px) {
+    .our-mission_section .floating-phone {
+      height: 180px;
+      right: 4rem;
+    }
+    .our-mission_section .heading_row {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    .our-mission_section .section_heading {
+      font-size: 44px;
+    }
+    .our-mission_section .heading_first_row .section_heading {
+      max-width: 100vw;
+    }
+    .our-mission_section .heading_second_row {
+      justify-content: flex-start;
+      padding-bottom: 0;
+    }
+    .our-mission_section .chat-bubble-wrapper {
+      position: relative;
+      max-width: 100%;
+      padding: 18px 40px 18px 24px;
+    }
+    .our-mission_section .chat-bubble-text {
+      font-size: 18px;
+      max-width: 250px;
+    }
+    .our-mission_section .heading_second_row .section_heading {
+      position: relative;
+      max-width: 100vw;
+      text-align: left;
+    }
+    .our-mission_section .heading_second_row .section_heading:hover::after {
+      content: "{{ section.settings.rectangle_text }}";
+      font-family: "Suisse Intl";
+      position: absolute;
+      z-index: 2;
+      left: 42%;
+      bottom: 70%;
+      background-color: #cce6f7;
+      padding: 24px;
+      font-size: 18px;
+      line-height: 1.4;
+      max-width: 320px;
+      text-transform: none;
+    }
+    .our-mission_section .heading_third_row {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 50px;
+    }
+    .our-mission_section .section_heading_italics {
+      font-size: 65px;
+    }
+    .our-mission_section .image2 {
+      width: 80px;
+    }
+    .our-mission_section .button {
+      margin: 0;
+    }
+  }
+  @media (min-width: 1100px) {
+    .our-mission_section .section_heading {
+      font-size: 65px;
+    }
+    .our-mission_section .chat-bubble {
+      height: 80px;
+    }
+    .our-mission_section .heading_third_row {
+      gap: 80px;
+    }
+    .our-mission_section .section_heading_italics {
+      font-size: 103px;
+    }
+     .our-mission_section .image2 {
+        width: 100px;
+      }
+  }
+</style>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <section class="our-mission_section">
+      <img
+        class="floating-phone"
+        src="https://cdn.shopify.com/s/files/1/0651/3616/5055/files/girl-with-red-hat-ma2ur_ld0ko-unsplash_1_1.png?v=1715552300"
+        alt="phone"
+        width="976"
+        height="976"
+      >
+      <div class="container">
+        {% if section.settings.section_headline != blank %}
+          <h2 class="supra_title">{{ section.settings.section_headline }}</h2>
+        {% endif %}
+        <div class="section_heading_wrapper">
+          <span class="heading_row heading_first_row">
+            <span class="section_heading">{{ section.settings.text_first_row }}</span>
+          </span>
+          <span class="heading_row heading_second_row">
+            <div class="chat-bubble-wrapper">
+              <svg class="chat-bubble" width="285" height="70" viewBox="0 0 285 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.85959 0.000488281H255.14C260.586 0.000488281 265 3.97799 265 8.8845V39.4757C266.301 54.3094 274.4 66.2607 284.884 69.2484C282.426 69.7219 279.879 69.9725 277.269 69.9725C271.345 69.9725 265.747 68.6892 260.773 66.409C259.176 67.4122 257.235 68.0005 255.14 68.0005H9.85959C4.41429 68.0005 0 64.023 0 59.1165V8.8845C0 3.97799 4.41429 0.000488281 9.85959 0.000488281Z" fill="#2E93FF"/>
+              </svg>
+              {% if section.settings.chat_bubble_text != blank %}
+                <span class="chat-bubble-text">{{ section.settings.chat_bubble_text }}</span>
+              {% endif %}
+            </div>
+            <span class="section_heading {% if section.settings.text_third_row == blank %} section_heading_italics{% endif %}">{{ section.settings.text_second_row }}</span>
+          </span>
+          {% if section.settings.text_third_row != blank %}
+            <span class="heading_row heading_third_row">
+              <div class="heading_italics_wrapper">
+                <span class="section_heading section_heading_italics">{{ section.settings.text_third_row }}</span>
+                <img
+                  class="image2"
+                  src="https://cdn.shopify.com/s/files/1/0651/3616/5055/files/mission-image2.png?v=1718550535"
+                  alt=""
+                  width="393"
+                  height="502"
+                >
+              </div>
+              {% if section.settings.short_description != blank %}
+                <div>
+                  <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.5411 26.8212L11.8302 20.0461L6.97124 25.0419L8.81901 18.3352L2.11227 20.1829L7.10811 15.324L0.401371 13.6131L7.10811 11.8337L2.11227 6.97476L8.81901 8.82254L6.97124 2.18424L11.8302 7.11164L13.5411 0.404899L15.3204 7.11164L20.1794 2.18424L18.3316 8.82254L25.0384 6.97476L20.0425 11.8337L26.7493 13.6131L20.0425 15.324L25.0384 20.1829L18.3316 18.3352L20.1794 25.0419L15.3204 20.0461L13.5411 26.8212Z" fill="black"/>
+                  </svg>
+                  <p class="section_description">
+                    {{ section.settings.short_description }}
+                  </p>
+                </div>
+              {% endif %}
+            </span>
+          {% elsif section.settings.short_description != blank %}
+            <div>
+              <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5411 26.8212L11.8302 20.0461L6.97124 25.0419L8.81901 18.3352L2.11227 20.1829L7.10811 15.324L0.401371 13.6131L7.10811 11.8337L2.11227 6.97476L8.81901 8.82254L6.97124 2.18424L11.8302 7.11164L13.5411 0.404899L15.3204 7.11164L20.1794 2.18424L18.3316 8.82254L25.0384 6.97476L20.0425 11.8337L26.7493 13.6131L20.0425 15.324L25.0384 20.1829L18.3316 18.3352L20.1794 25.0419L15.3204 20.0461L13.5411 26.8212Z" fill="black"/>
+              </svg>
+              <p class="section_description">
+                {{ section.settings.short_description }}
+              </p>
+            </div>
+          {% endif %}
+        </div>
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}">
+            <button class="button">
+              {{ section.settings.button_text -}}
+              <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+            </button>
+          </a>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our mission",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_headline",
+      "label": "Headline",
+      "default": "Our mission"
+    },
+    {
+      "type": "text",
+      "id": "text_first_row",
+      "label": "Text first row",
+      "default": "To restore what it means to do"
+    },
+    {
+      "type": "text",
+      "id": "text_second_row",
+      "label": "Text second row",
+      "default": "good and feel good,"
+    },
+    {
+      "type": "text",
+      "id": "chat_bubble_text",
+      "label": "Chat bubble text",
+      "default": "Let’s create for the better! Are you in? 🤠"
+    },
+    {
+      "type": "text",
+      "id": "text_third_row",
+      "label": "Text third row",
+      "default": "for everybody."
+    },
+    {
+      "type": "text",
+      "id": "short_description",
+      "label": "Short description",
+      "default": "Wellness has no container. So why color inside the lines? We imagine a future where we’re free to shape our own lives and take up space with vibrancy. For brands ready to go bold. Those who dare to stand out and be seen – with vibrancy, joy, and realness. Carve out your space. Attract your people. Leave an everlasting mark."
+    },
+    {
+      "type": "text",
+      "id": "rectangle_text",
+      "label": "Hover rectangle text",
+      "default": "for humans who take it beyond the talk and show up for their communities, pets, and planet."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Mission"
+    }
+  ]
+}
+{% endschema %}

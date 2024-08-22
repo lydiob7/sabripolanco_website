@@ -1,0 +1,285 @@
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+      padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+    #section-{{ section.id }} .container {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    #section-{{ section.id }} .sections-menu {
+      display: none;
+    }
+    #section-{{ section.id }} .faqs_wrapper {
+        margin: 0;
+    }
+    #section-{{ section.id }} .accordion {
+        border-bottom: 1px solid #000000;
+    }
+    #section-{{ section.id }} .accordion summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    #section-{{ section.id }} .faqs_index {
+        font-family: "Suisse Intl";
+        font-size: 14px;
+        font-weight: 500;
+    }
+    #section-{{ section.id }} .accordion__title {
+        font-family: "Suisse Intl";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        flex: 1 1 100%;
+    }
+    #section-{{ section.id }} .accordion summary .icon-plus {
+        height: 20px;
+        width: 20px;
+    }
+    #section-{{ section.id }} .accordion summary .icon-minus {
+      display: none;
+      height: 4px;
+      width: 20px;
+    }
+    #section-{{ section.id }} .accordion details[open] .icon-plus {
+      display: none;
+    }
+    #section-{{ section.id }} .accordion details[open] .icon-minus {
+      display: block;
+    }
+    #section-{{ section.id }} .sectin-heading {
+      font-size: 60px;
+      line-height: 1;
+      margin: 0;
+      padding: 36px 0;
+      border-bottom: 1px solid #000000;
+    }
+    #section-{{ section.id }} .accordion__content {
+      padding: 0 0 2rem 2.5rem;
+    }
+
+    @media (min-width: 1100px) {
+      #section-{{ section.id }} .container {
+        display: grid;
+        gap: 4rem;
+        grid-template-columns: 250px 1fr;
+      }
+      #section-{{ section.id }} .sections-menu {
+        display: grid;
+        gap: 1rem;
+        height: max-content;
+        padding: 36px 0;
+      }
+      #section-{{ section.id }} .section-menu-title,
+      #section-{{ section.id }} .menu-item {
+        display: block;
+        text-decoration: none;
+        color: black;
+        font-family: "Suisse Intl";
+        font-size: 18px;
+        padding: 10px 0;
+      }
+      #section-{{ section.id }} .sectin-heading {
+        font-size: 100px;
+      }
+  }
+{%- endstyle -%}
+
+{% liquid
+  assign faq_index = 0
+%}
+
+<div id="section-{{ section.id }}" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="container">
+      <div class="sections-menu">
+        {% if section.settings.quick_links_text != blank %}
+          <div class="section-menu-title">{{ section.settings.quick_links_text }}</div>
+        {% endif %}
+        {%- for block in section.blocks -%}
+          {% case block.type %}
+            {% when 'section_heading' %}
+              <a href="#{{ block.settings.content | downcase | split: " " | join: "-" }}" class="menu-item">
+                {{ block.settings.content }}
+              </a>
+          {% endcase %}
+        {% endfor %}
+      </div>
+      
+      <div class="faqs_wrapper">
+        {%- for block in section.blocks -%}
+          {% case block.type %}
+            {% when 'section_heading' %}
+              <div id="{{ block.settings.content | downcase | split: " " | join: "-" }}" class="section-heading-wrapper">
+                {% if block.settings.content != blank %}
+                  <h2 class="sectin-heading">
+                    {%- assign title_words = block.settings.content | split: ' ' -%}
+                    {% for word in title_words -%}
+                      {% if forloop.last and forloop.length != 1 %}
+                        <i class="heading_italics">{{ word }}</i>
+                      {% else %}
+                        {{ word }}
+                      {%- endif -%}
+                    {%- endfor %}
+                  </h2>
+                {% endif %}
+              </div>
+            {% when 'collapsible_row' %}
+              {% liquid
+                assign faq_index = faq_index | plus: 1
+              %}
+              <div
+                class="accordion"
+                {{ block.shopify_attributes }}
+              >
+                <details
+                  id="Details-{{ block.id }}-{{ section.id }}"
+                  {% if section.settings.open_first_collapsible_row and forloop.first %}
+                    open
+                  {% endif %}
+                >
+                  <summary id="Summary-{{ block.id }}-{{ section.id }}">
+                    <span class="faqs_index">
+                      {%- if faq_index <= 9 %}
+                          {{ faq_index | prepend: "0" }}
+                      {% else %}
+                          {{ faq_index }}
+                      {% endif %}
+                    </span>
+                    <h3 class="accordion__title">
+                      {{ block.settings.heading | escape }}
+                    </h3>
+                     {% render 'icon-plus' %}
+                    {% render 'icon-minus' %}
+                  </summary>
+                  <div
+                    class="accordion__content"
+                    id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+                    role="region"
+                    aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+                  >
+                    {{ block.settings.row_content }}
+                  </div>
+                </details>
+              </div>
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="mobile_button hide-on-desktop">
+          <button class="button">
+            {{ section.settings.button_text }}
+            <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+          </button>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main FAQs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "quick_links_text",
+      "label": "Quick links Title",
+      "default": "QUICK LINKS"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first_collapsible_row",
+      "default": false,
+      "label": "t:sections.collapsible_content.settings.open_first_collapsible_row.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "section_heading",
+      "name": "Section Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Heading",
+          "default": "Section 1"
+        }
+      ]
+    },
+    {
+      "type": "collapsible_row",
+      "name": "t:sections.collapsible_content.blocks.collapsible_row.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "This is an example of a question",
+          "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.heading.label",
+          "info": "t:sections.collapsible_content.blocks.collapsible_row.settings.heading.info"
+        },
+        {
+          "type": "richtext",
+          "id": "row_content",
+          "default": "<p>This is an example of an answer</p>",
+          "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.row_content.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main FAQs",
+      "blocks": [
+        {
+          "type": "section_heading"
+        },
+        {
+          "type": "collapsible_row"
+        },
+        {
+          "type": "collapsible_row"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

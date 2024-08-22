@@ -1,0 +1,258 @@
+<style>
+  #section-{{ section.id }} {
+    padding: 40px 0 0 0;
+  }
+  #section-{{ section.id }} .inner-container {
+    max-width: 1250px;
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+  #section-{{ section.id }} .sub-head {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #section-{{ section.id }} .headline {
+    font-size: 60px;
+    line-height: 1;
+    margin: 1rem 0 0 0;
+  }
+  #section-{{ section.id }} .timeline-wrapper {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+  }
+  #section-{{ section.id }} .milestone-title-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    border-top: 1px solid black;
+    cursor: pointer;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+  #section-{{ section.id }} .milestone-subtitle {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+  }
+  #section-{{ section.id }} .milestone-title {
+    font-size: 48px;
+    line-height: 1;
+    margin: 2rem 0 0 0;
+  }
+  #section-{{ section.id }} .minus-icon {
+    display: none;
+    margin-bottom: 11px;
+  }
+  #section-{{ section.id }} .milestone-item.open .minus-icon {
+    display: block;
+  }
+  #section-{{ section.id }} .milestone-item.open .plus-icon {
+    display: none;
+  }
+  #section-{{ section.id }} .deliverables-title {
+    font-family: "Suisse Intl";
+    font-size: 18px;
+    font-weight: 500;
+    margin: 1rem 0;
+  }
+  #section-{{ section.id }} .deliverables-body ul {
+    margin: 0;
+    padding-left: 2rem;
+  }
+  #section-{{ section.id }} .milestone-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  #section-{{ section.id }} .milestone-item.open .milestone-content {
+    max-height: 100vh;
+    overflow: auto;
+  }
+  #section-{{ section.id }} .milestone-item .milestone-deliverables {
+    padding-bottom: 2rem;
+  }
+  #section-{{ section.id }} .bottom-separator {
+    width: 100%;
+  }
+  #section-{{ section.id }} .bottom-separator img {
+    width: 100%;
+    height: 64px;
+    object-fit: cover;
+  }
+
+  @media (min-width: 750px) {
+    #section-{{ section.id }} {
+      padding: 80px 0 0 0;
+    }
+    #section-{{ section.id }} .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    #section-{{ section.id }} .title-wrapper {
+      margin-bottom: 0;
+    }
+    #section-{{ section.id }} .headline {
+      font-size: 100px;
+    }
+    #section-{{ section.id }} .milestone-item {
+      border-top: 1px solid black;
+      display: grid;
+      grid-template-columns: 35% 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 40px 0;
+    }
+    #section-{{ section.id }} .milestone-title-wrapper {
+      padding: 0;
+      border-top: none;
+      margin-bottom: 0;
+    }
+    #section-{{ section.id }} .milestone-title {
+      font-size: 60px;
+    }
+    #section-{{ section.id }} .milestone-item .minus-icon {
+      display: none!important;
+    }
+    #section-{{ section.id }} .milestone-item .plus-icon {
+      display: none!important;
+    }
+    #section-{{ section.id }} .milestone-item .milestone-content {
+      display: grid;
+      grid-template-columns: 60% 1fr;
+      gap: 80px;
+      max-height: 100vh;
+      overflow: auto;
+    }
+    #section-{{ section.id }} .milestone-item .milestone-deliverables {
+      padding-bottom: 0;
+    }
+     #section-{{ section.id }} .bottom-separator img {
+      height: auto;
+      object-fit: scale-down;
+      margin-top: 2rem;
+    }
+  }
+</style>
+
+<section id="section-{{ section.id }}">
+  <div class="inner-container">
+    <div class="section-header">
+      <div class="title-wrapper">
+        {% if section.settings.sub_head != blank %}
+          <div class="sub-head">{{ section.settings.sub_head }}</div>
+        {% endif %}
+        {% if section.settings.headline != blank %}
+          <h2 class="headline">{{ section.settings.headline }}</h2>
+        {% endif %}
+      </div>
+
+      {% if section.settings.cta_text %}
+        <a href="{{ section.settings.cta_url }}">
+          <button class="button">
+            {{ section.settings.cta_text }} <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+          </button>
+        </a>
+      {% endif %}
+    </div>
+
+    {% if metaobject.timeline.value.milestones.value %}
+        <div class="timeline-wrapper">
+          {% for milestone in metaobject.timeline.value.milestones.value %}
+            <div class="milestone-item">
+              <div class="milestone-title-wrapper">
+                <div>
+                  {% if milestone.subtitle != blank %}
+                    <div class="milestone-subtitle">{{ milestone.subtitle }}</div>
+                  {% endif %}
+                  <h3 class="milestone-title">{{ milestone.headline }}</h3>
+                </div>
+
+                <svg class="plus-icon" width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.1 12.8615V10.8815H8.02V0.141483H9.76V10.8815H17.68V12.8615H9.76V23.6015H8.02V12.8615H0.1Z" fill="black"/>
+                </svg>
+                <svg class="minus-icon" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.114531 3.76V0.32H12.8345V3.76H0.114531Z" fill="black"/>
+                </svg>
+
+              </div>
+
+              <div class="milestone-content">
+                <div class="milestone-description">
+                  {{ milestone.description | metafield_tag }}
+                </div>
+                
+                <div class="milestone-deliverables">
+                  <h4 class="deliverables-title">Deliverables</h4>
+                  <div class="deliverables-body">
+                    {{ milestone.deliverables | metafield_tag }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    {% endif %}
+    <div class="bottom-separator">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0651/3616/5055/files/Group_1834.png?v=1715528547"
+        width="6680"
+        height="513"
+      >
+    </div>
+  </div>
+
+</section>
+
+{% javascript %}
+  const milestoneItems = [...document.querySelectorAll(".milestone-item")];
+
+  milestoneItems.forEach(item => {
+    const title = item.querySelector(".milestone-title-wrapper");
+    title.addEventListener("click", ev => {
+      item.classList.toggle("open");
+    })
+  })
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Service timeline",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub_head",
+        "label": "Sub head",
+        "default": "Timeline"
+      },
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline",
+        "default": "Our Process"
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA Text",
+        "default": "Download Service Guide"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Service timeline"
+      }
+    ]
+  }
+{% endschema %}

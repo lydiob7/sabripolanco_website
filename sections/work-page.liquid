@@ -1,0 +1,56 @@
+<style>
+  .container {
+    width: 100vw;
+  }
+  .work_image {
+    width: 100%;
+  }
+  .work_image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: -10px;
+  }
+  @media (min-width: 1800px) {
+    .main-wrapper {
+      background-color: #000000;
+    }
+    .container {
+      width: 1800px;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<div class="main-wrapper">
+  <div class="container">
+    {% if metaobject.images.value != blank %}
+      {% for image in metaobject.images.value %}
+        <div class="work_image">
+          <img
+            src="{{ image.src | image_url }}"
+            alt="{{ image.alt | escape }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+          >
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="work_image">
+          <img
+            src="{{ metaobject.featured_image.value.src | image_url }}"
+            alt="{{ metaobject.featured_image.value.alt | escape }}"
+            width="{{ metaobject.featured_image.value.width }}"
+            height="{{ metaobject.featured_image.value.height }}"
+          >
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Work images",
+  "settings": []
+}
+{% endschema %}

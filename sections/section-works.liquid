@@ -1,0 +1,388 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .our-work_section {
+    position: relative;
+  }
+  .our-work_section .container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .our-work_section .supra_title {
+    font-family: 'Suisse Intl';
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .our-work_section .section_title {
+    font-size: 60px;
+    margin: 0;
+    line-height: 1;
+  }
+  .our-work_section .hide-on-mobile {
+    display: none;
+  }
+  .our-work_section .work_grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .our-work_section .work_grid a {
+    display: block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+  .our-work_section .work_grid a.hide-on-mobile {
+    display: none;
+  }
+  .our-work_section .work_card {
+    display: grid;
+    gap: 16px;
+    margin: 1rem 0;
+    width: 100%;
+  }
+  .our-work_section .work_card .work_image {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 75vw;
+    object-fit: cover;
+  }
+  .our-work_section .work_card .work_image .main_image {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .our-work_section .work_card .work_image .main_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .our-work_section .work_card .coming-soon-lace {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    text-transform: uppercase;
+    position: absolute;      
+    background-color: black;
+    color: white;
+    top: 30%;
+    left: 0;
+    white-space: nowrap;
+    padding: 2rem 0;
+    transform: rotate(-15deg) translate(-50px, 80px);
+    transform-origin: left;
+  }
+  .our-work_section .work_card .work_image .hover-overlay {
+    display: none;
+  }
+  .our-work_section .work_card .work_flex {
+    display: grid;
+    gap: 2rem;
+  }
+  .our-work_section .work_card .work_tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .our-work_section .work_card .work_tag {
+    padding: 0 20px;
+    border: 1px solid #000000;
+    border-radius: 999px;
+  }
+  .our-work_section .work_card .work_title {
+    font-family: 'SeriouslyNostalgic';
+    font-size: 28px;
+    line-height: 1;
+    margin: 0;
+  }
+  .our-work_section .hide-on-desktop {
+    display: block;
+    width: max-content;
+    margin: 40px auto 0 auto;
+  }
+
+  .our-work_section .button:hover {
+    background-color: transparent;
+    color: #000000;
+    outline: 1px solid #000000;
+  }
+
+  .our-work_section .button:after,
+  .our-work_section .button:not([disabled]):hover:after {
+    box-shadow: none;
+  }
+
+  @media (min-width: 750px) {
+    .our-work_section .section_title {
+      font-size: 100px;
+    }
+    .our-work_section .work_flex {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .our-work_section .work_flex > div {
+      width: 100%;
+    }
+    .our-work_section .hide-on-mobile {
+      display: block;
+    }
+    .our-work_section .hide-on-desktop {
+      display: none;
+    }
+    .our-work_section .work_grid {
+      margin-top: 4rem;
+      grid-template-columns: repeat(2, 1fr);
+      place-items: start;
+    }
+    .our-work_section .work_grid a.hide-on-mobile {
+      display: block;
+    }
+    .our-work_section .work_card .work_image {
+      height: 40vw;
+    }
+    .our-work_section .work_card .work_image .main_image {
+      transition: transform 0.1s ease;
+    }
+    .our-work_section .work_card .coming-soon-lace {
+      transition: transform 0.1s ease;
+      display: none;
+      top: 40%;
+    }
+    .our-work_section .work_card:hover .coming-soon-lace {
+      display: flex;
+    }
+    .our-work_section .work_card:hover .hover-overlay {
+      display: block;
+      position: absolute;
+      inset: 0;
+      transition: transform 0.1s ease;
+    }
+    .our-work_section .work_card .hover-overlay .overlay-tag {
+      position: absolute;
+      background-color: #ffffff;
+      color: #000000;
+      border: 1px solid #000000;
+      border-radius: 100%;
+      font-size: 16px;
+      line-height: 1;
+      padding: 16px 20px;
+      text-transform: uppercase;
+    }
+    .our-work_section .work_card .hover-overlay .overlay-tag:nth-child(1) {
+      top: 18%;
+      left: 12%;
+      transform: rotate(-10deg);
+    }
+    .our-work_section .work_card .hover-overlay .overlay-tag:nth-child(2) {
+      top: 15%;
+      right: 12%;
+      transform: rotate(10deg);
+    }
+    .our-work_section .work_card .hover-overlay .overlay-tag:nth-child(3) {
+      top: 45%;
+      left: 35%;
+      transform: rotate(-2deg);
+    }
+    .our-work_section .work_card .hover-overlay .overlay-tag:nth-child(4) {
+      bottom: 14%;
+      left: 10%;
+      transform: rotate(-7deg);
+    }
+    .our-work_section .work_card .hover-overlay .overlay-tag:nth-child(5) {
+      bottom: 18%;
+      right: 10%;
+      transform: rotate(8deg);
+    }
+    .our-work_section .work_card:hover .rotate-right {
+      transform: rotate(3deg);
+    }
+    .our-work_section .work_card:hover .rotate-left {
+      transform: rotate(-3deg);
+    }
+    .our-work_section .work_card .work_flex > div {
+      width: auto;
+    }
+  }
+  @media (min-width: 990px) {
+    .our-work_section .work_card .work_image {
+      height: 471px;
+    }
+    .our-work_section .work_card .work_flex {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .our-work_section .work_card .work_tags {
+      justify-content: flex-end;
+    }
+  }
+</style>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <section class="our-work_section">
+      <div class="container">
+        <div class="work_flex">
+          <div>
+            {% if section.settings.sub_head %}
+              <span class="supra_title">{{ section.settings.sub_head }}</span>
+            {% endif %}
+            {% if section.settings.headline %}
+              <h2 class="section_title">{{ section.settings.headline }}</h2>
+            {% endif %}
+          </div>
+          <div>
+            {% if section.settings.body %}
+              <p>{{ section.settings.body }}</p>
+            {% endif %}
+            {% if section.settings.cta_text %}
+              <a href="/pages/works" class="hide-on-mobile">
+                <button class="button">
+                  {{ section.settings.cta_text }} <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+                </button>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if shop.metaobjects.works %}
+          <div class="work_grid">
+            {% if section.blocks.size > 0 %}
+              {% for block in section.blocks %}
+                {% assign work = shop.metaobjects.works.values | where: "title", block.settings.title | first %}
+                {% render 'work-card', url: work.system.url, coming_soon: work.coming_soon, featured_image: work.featured_image, tags: work.tags, title: work.title, main_color: work.main_color  %}
+              {% endfor %}
+            {% else %}
+              {% assign sorted_works = shop.metaobjects.works.values | sort_natural: 'sort_order_letter' %}
+              {% for work in sorted_works limit: section.settings.list_limit %}
+                {% render 'work-card', url: work.system.url, coming_soon: work.coming_soon, featured_image: work.featured_image, tags: work.tags, title: work.title, main_color: work.main_color  %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.cta_text %}
+          <a href="/pages/works" class="hide-on-desktop">
+            <button class="button">
+              {{ section.settings.cta_text }} <span style="margin-left:.5rem;">{% render 'icon-arrow' → %}</span>
+            </button>
+          </a>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Works",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_head",
+      "label": "Sub head",
+      "default": "RADIANT CREATIONS"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Our Work"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "Every brand has a story. We bring these stories to life through purposeful strategy, bold design, and authentic messaging. We believe in the power of realness and building brands that radiate. See how we've helped others shine."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "See Our Work"
+    },
+    {
+      "type": "range",
+      "id": "list_limit",
+      "label": "List limit",
+      "default": 4,
+      "min": 2,
+      "max": 10,
+      "step": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_half_on_mobile",
+      "label": "Hide some cards on mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_work",
+      "name": "Featured Work",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Works"
+    }
+  ]
+}
+{% endschema %}

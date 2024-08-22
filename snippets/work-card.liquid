@@ -1,0 +1,51 @@
+<{% if coming_soon %}div{% else %}a{% endif %}
+    class="{% if section.settings.hide_half_on_mobile and forloop.index0 == 2 or forloop.index0 == 3 %}hide-on-mobile{% endif %}"
+    {% unless coming_soon %}
+      href="{{ url }}"
+    {% endunless %}
+  >
+    <div class="work_card">
+      <div class="work_image" style="background-color: {{ main_color | default: '#DDDDDD' }}">
+        {% assign image = featured_image %}
+        {% if featured_image.value != blank %}{% assign image = featured_image.value %}{% endif %}
+        <div class="main_image{% if forloop.index0 == 0 or forloop.index0 == 2 %} rotate-left{% else %} rotate-right{% endif %}">
+          <img
+            src="{{ image.src | image_url }}"
+            alt="{{ image.alt | escape }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+          >
+          {% if coming_soon %}
+            <div class="coming-soon-lace">
+              <span>Coming soon</span>
+              <span>Coming soon</span>
+              <span>Coming soon</span>
+              <span>Coming soon</span>
+              <span>Coming soon</span>
+              <span>Coming soon</span>
+            </div>
+          {% else %}
+            <div class="hover-overlay{% if forloop.index0 == 0 or forloop.index0 == 2 %} rotate-left{% else %} rotate-right{% endif %}">
+              <div class="overlay-tag">View project</div>
+              <div class="overlay-tag">View project</div>
+              <div class="overlay-tag">View project</div>
+              <div class="overlay-tag">View project</div>
+              <div class="overlay-tag">View project</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="work_flex">
+        <div class="work_tags">
+          {% assign tags_to_show = tags %}
+          {% if tags.value != blank %}{% assign tags_to_show = tags.value %}{% endif %}
+          {% for tag in tags_to_show %}
+            <span class="work_tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        <div>
+          <h3 class="work_title">{{ title }}</h3>
+        </div>
+      </div>
+    </div>
+  </{% if coming_soon %}div{% else %}a{% endif %}>

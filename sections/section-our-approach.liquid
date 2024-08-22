@@ -1,0 +1,286 @@
+{%- style -%}
+    .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #section-{{ section.id }} {
+    display: grid;
+    gap: 2rem;
+    width: 100%;
+    overflow: hidden;
+    color: black;
+  }
+  #section-{{ section.id }} .section_info_container {
+      padding: 0 2rem;
+  }
+  #section-{{ section.id }} .supra_title {
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #section-{{ section.id }} .section_heading {
+      font-size: 60px;
+      margin: 0;
+    line-height: 1;
+  }
+  #section-{{ section.id }} .section_heading em {
+      font-familty: "SeriouslyNostalgic Fn It";
+  }
+  #section-{{ section.id }} .section_description {
+    font-size: 18px;
+  }
+  #section-{{ section.id }} .cards_list {
+      width: calc(100vw - 2rem);
+      overflow-x: scroll;
+      display: flex;
+      gap: 1rem;
+      padding-left: 2rem;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 2rem;
+  }
+  #section-{{ section.id }} .approach_card {
+      padding: 36px 20px 16px 20px;
+      border: 1px solid #000000;
+      border-radius: 24px;
+      width: 70vw;
+      flex-shrink: 0;
+      display: grid;
+      grid-template-rows: max-content 1fr max-content;
+      scroll-snap-align: start;
+  }
+  #section-{{ section.id }} .card_headline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: "Suisse Intl";
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 500;
+    letter-spacing: 1.4px;
+  }
+  #section-{{ section.id }} .card_description {
+    white-space: pre-line;
+    font-size: 18px;
+  }
+  #section-{{ section.id }} .card_description p {
+    margin: 0;
+  }
+  #section-{{ section.id }} .hide-on-mobile {
+      display: none;
+  }
+
+  @media (min-width: 750px) {
+    #section-{{ section.id }} .approach_card {
+      width: 300px;
+    }
+  }
+  @media (min-width: 990px) {
+      #section-{{ section.id }} {
+          grid-template-columns: 1fr 2fr;
+          max-width: min(90vw, 1250px);
+          padding: 0 2rem;
+          gap: 4rem;
+          margin: 0 auto;
+      }
+      #section-{{ section.id }} .section_info_container {
+          padding: 0;
+      }
+      #section-{{ section.id }} .section_heading {
+          font-size: 80px;
+      }
+      #section-{{ section.id }} .cards_list {
+          width: 100%;
+          overflow: auto;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 4rem;
+          padding-left: 0;
+      }
+      #section-{{ section.id }} .approach_card {
+          padding: 0;
+          border: none;
+          border-radius: 0;
+          width: 100%;
+      }
+      #section-{{ section.id }} .hide-on-desktop {
+          display: none;
+      }
+      #section-{{ section.id }} .hide-on-mobile {
+          display: block;
+      }
+  }
+  @media (min-width: 1100px) {
+      #section-{{ section.id }} .section_heading {
+          font-size: 100px;
+      }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <section id="section-{{ section.id }}">
+      <div class="section_info_container">
+        {% if section.settings.headline != blank %}
+          <div class="supra_title">{{ section.settings.headline }}</div>
+        {% endif %}
+        {% if section.settings.heading_text != blank %}
+          <h2 class="section_heading">
+            {%- assign title_words = section.settings.heading_text | split: ' ' -%}
+            {% for word in title_words -%}
+              {% if forloop.last and forloop.length != 1 %}
+                <em>{{ word }}</em>
+              {% else %}
+                {{ word }}
+              {%- endif -%}
+            {%- endfor %}
+          </h2>
+        {% endif %}
+        {% if section.settings.section_description != blank %}
+          <p class="section_description">
+            {{ section.settings.section_description }}
+          </p>
+        {% endif %}
+      </div>
+
+      <div class="cards_list">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'approach-card' %}
+              <div class="approach_card">
+                <div class="card_headline">
+                  <svg
+                    class="hide-on-mobile"
+                    width="27"
+                    height="27"
+                    viewBox="0 0 27 27"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M13.5411 26.8212L11.8302 20.0461L6.97124 25.0419L8.81901 18.3352L2.11227 20.1829L7.10811 15.324L0.401371 13.6131L7.10811 11.8337L2.11227 6.97476L8.81901 8.82254L6.97124 2.18424L11.8302 7.11164L13.5411 0.404899L15.3204 7.11164L20.1794 2.18424L18.3316 8.82254L25.0384 6.97476L20.0425 11.8337L26.7493 13.6131L20.0425 15.324L25.0384 20.1829L18.3316 18.3352L20.1794 25.0419L15.3204 20.0461L13.5411 26.8212Z" fill="black"/>
+                  </svg>
+                  {{ block.settings.headline }}
+                </div>
+                {% if block.settings.card_description != blank %}
+                  <div class="card_description">
+                    {{ block.settings.card_description }}
+                  </div>
+                {% endif %}
+                <svg
+                  class="hide-on-desktop"
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M13.5411 26.8212L11.8302 20.0461L6.97124 25.0419L8.81901 18.3352L2.11227 20.1829L7.10811 15.324L0.401371 13.6131L7.10811 11.8337L2.11227 6.97476L8.81901 8.82254L6.97124 2.18424L11.8302 7.11164L13.5411 0.404899L15.3204 7.11164L20.1794 2.18424L18.3316 8.82254L25.0384 6.97476L20.0425 11.8337L26.7493 13.6131L20.0425 15.324L25.0384 20.1829L18.3316 18.3352L20.1794 25.0419L15.3204 20.0461L13.5411 26.8212Z" fill="black"/>
+                </svg>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Approach",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "headline lorem"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Section heading",
+      "default": "Our Approach"
+    },
+    {
+      "type": "text",
+      "id": "section_description",
+      "label": "Section description",
+      "default": "for humans who take it beyond the talk and show up for their communities, pets, and planet."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "approach-card",
+      "name": "Approach card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline",
+          "default": "headline"
+        },
+        {
+          "type": "richtext",
+          "id": "card_description",
+          "label": "Card description",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Approach",
+      "blocks": [
+        {
+          "type": "approach-card"
+        },
+        {
+          "type": "approach-card"
+        },
+        {
+          "type": "approach-card"
+        },
+        {
+          "type": "approach-card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

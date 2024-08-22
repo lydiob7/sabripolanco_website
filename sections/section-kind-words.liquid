@@ -1,0 +1,255 @@
+<style>
+  #section-{{ section.id }} {
+    padding: 40px 0 60px 0;
+  }
+  #section-{{ section.id }} .inner-container {
+    max-width: 1250px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    overflow: hidden;
+    overflow: clip;
+  }
+  #section-{{ section.id }} .sub-head {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #section-{{ section.id }} .headline {
+    font-size: 60px;
+    line-height: 1;
+    margin: 1rem 0 0 0;
+  }
+  #section-{{ section.id }} .section-carousel-container {
+    position: relative;
+  }
+  #section-{{ section.id }} .section-carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 135px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.80) 100%);
+    pointer-events: none;
+  }
+  #section-{{ section.id }} .section-carousel-container .carousel-arrow {
+    position: absolute;
+    background: transparent;
+    top: 0;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border: none;
+    z-index: 2;
+    cursor: pointer;
+  }
+  #section-{{ section.id }} .section-carousel-container .carousel-arrow[disabled] {
+    cursor: default;
+  }
+  #section-{{ section.id }} .section-carousel-container .carousel-arrow-previous {
+    left: -2rem;
+  }
+  #section-{{ section.id }} .section-carousel-container .carousel-arrow-previous svg {
+    transform: rotate(180deg);
+  }
+  #section-{{ section.id }} .section-carousel-container .carousel-arrow-next {
+    right: 0;
+  }
+  #section-{{ section.id }} .section-carousel-container .carousel-arrow .icon-container {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    background-color: black;
+    color: white;
+    border-radius: 900px;
+  }
+  #section-{{ section.id }} .section-carousel-container .carousel-arrow[disabled] .icon-container {
+    opacity: .4;
+  }
+  #section-{{ section.id }} .section-carousel {
+    margin-top: 4rem;
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+    overflow: hidden;
+    margin-right: -2rem;
+    scroll-behavior: smooth;
+  }
+  #section-{{ section.id }} .section-carousel .video {
+    flex-basis: 80vw;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  #section-{{ section.id }} .section-carousel .video video {
+    width: 100%;
+  }
+
+  
+  @media (min-width: 750px) {
+    #section-{{ section.id }} {
+      padding: 80px 0;
+    }
+     #section-{{ section.id }} .headline {
+      font-size: 100px;
+    }
+    #section-{{ section.id }} .section-carousel .video {
+      flex-basis: calc(25% - 1rem);
+    }
+    #section-{{ section.id }} .section-carousel {
+      margin-right: 0;
+    }
+  }
+  @media (min-width: 1440px) {  
+    #section-{{ section.id }} .inner-container {
+      overflow-clip-margin: 8rem;
+    }
+    #section-{{ section.id }} .section-carousel-container::after {
+      right: -4rem;
+    }
+    #section-{{ section.id }} .section-carousel-container .carousel-arrow-previous {
+      left: -6rem;
+    }
+    #section-{{ section.id }} .section-carousel-container .carousel-arrow-next {
+      right: -4rem;
+    }
+    #section-{{ section.id }} .section-carousel {
+      margin-right: -4rem;
+    }
+  }
+</style>
+
+<section id="section-{{ section.id }}">
+    <div class="inner-container">
+      {% if section.settings.sub_head != blank %}
+        <div class="sub-head">{{ section.settings.sub_head }}</div>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        <h2 class="headline">{{ section.settings.headline }}</h2>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="section-carousel-container">
+          <button class="carousel-arrow carousel-arrow-previous" title="previous-item">
+            <div class="icon-container">
+              {% render 'icon-arrow' %}
+            </div>
+          </button>
+          
+          <div class="section-carousel">  
+            {% for block in section.blocks %}
+              <div class="video">
+                <video controls>
+                  {% for source in block.settings.video.sources %}
+                    <source src="{{ source.url }}" type="{{ block.settings.video.media_type }}/{{ source.format }}">
+                  {% endfor %}
+                </video>
+              </div>
+            {% endfor %}  
+          </div>
+            
+          <button class="carousel-arrow carousel-arrow-next" title="next-item">
+            <div class="icon-container">
+              {% render 'icon-arrow' %}
+            </div>
+          </button>
+        </div>
+      {% endif %}
+    </div>
+</section>
+
+{% javascript %}
+  function makeCarouselInteractive() {
+    let currentVisibleVideoIndex = 0;
+    const previousButton = document.querySelector(".carousel-arrow-previous");
+    const nextButton = document.querySelector(".carousel-arrow-next");
+    const carousel = document.querySelector(".section-carousel");
+    const carouselItems = [...carousel.querySelectorAll(".video")];
+
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function scrollCarousel(direction) {
+      if (
+        (direction === "previous" && (currentVisibleVideoIndex === 0 || isInViewport(carouselItems[0]))) ||
+        (direction === "next" && (currentVisibleVideoIndex === carouselItems.length - 1 || isInViewport(carouselItems[carouselItems.length - 1])))
+      ) return;
+
+      const newVisibleVideoIndex = direction === "previous" ? currentVisibleVideoIndex - 1 : currentVisibleVideoIndex + 1;
+      currentVisibleVideoIndex = newVisibleVideoIndex
+      carousel.scrollLeft = carouselItems[newVisibleVideoIndex]?.offsetLeft;
+      if (newVisibleVideoIndex === 0) previousButton.disabled = true;
+      else if (newVisibleVideoIndex === carouselItems.length - 1) nextButton.disabled = true;
+      else {
+        previousButton.disabled = false;
+        nextButton.disabled = false;
+      }
+    }
+
+    function resetCarousel() {
+      currentVisibleVideoIndex = 0
+      carousel.scrollLeft = carouselItems[0]?.offsetLeft;
+      previousButton.disabled = true;
+      if (isInViewport(carouselItems[carouselItems.length - 1])) nextButton.disabled = true;
+      else nextButton.disabled = false;
+    }
+
+    resetCarousel();
+
+    previousButton.addEventListener("click", () => scrollCarousel("previous"));
+    nextButton.addEventListener("click", () => scrollCarousel("next"));
+    
+    window.addEventListener("resize", resetCarousel);
+  }
+  
+  window.addEventListener("load", makeCarouselInteractive);
+  
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Kind Words",
+    "settings": [
+       {
+        "type": "text",
+        "id": "sub_head",
+        "label": "Sub head",
+        "default": "KIND WORDS"
+      },
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline",
+        "default": "Happy Clients"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "carousel_video",
+        "name": "Carousel Video",
+        "settings": [
+          {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Kind Words"
+      }
+    ]
+  }
+{% endschema %}
