@@ -64,7 +64,7 @@
           </li>
         </ul>
       {%- endif -%}
-      <div class="contact__fields">
+      <div class="field-group contact__fields">
         <p class="field-group-title">Contact info</p>
         
         <div class="field">
@@ -143,7 +143,7 @@
         </div>
       </div>
 
-      <div class="contact__fields">
+      <div class="field-group contact__fields">
         <p class="field-group-title">The project</p>
         
         <div class="field">
@@ -203,55 +203,91 @@
         </div>
       </div>
       
-      <div class="comment-field">
+      <div class="field-group comment-field">
         <label class="" for="ContactForm-body">
-          Tell us about your project or brand <span aria-hidden="true">*</span>
+          Provide an overview of your brand, including its mission, values, audience, and personality. <span aria-hidden="true">*</span>
         </label>
         <textarea
           rows="10"
           id="ContactForm-body"
           class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
+          name="contact[project_overview]"
+          placeholder="Project overview"
+        >
+          {{- form.body -}}
+        </textarea>
+      </div>
+      
+      <div class="field-group comment-field">
+        <label class="" for="ContactForm-body">
+          Briefly describe the project. What specific goals do you aim to achieve with this project? <span aria-hidden="true">*</span>
+        </label>
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[project_expectation]"
+          placeholder="Project Expectation"
         >
           {{- form.body -}}
         </textarea>
       </div>
 
-      <p class="field-group-title">Services</p>
-      <p class="field-group-description">Select all that apply</p>
-      <div class="services-select-wrapper">
-        <div class="services-select" id="services">
-            <label class="services-option"><input type="checkbox" name="services" value="brand-strategy"><span>Brand Strategy</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="visual-identity"><span>Visual Identity</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="web-design"><span>Web Design</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="social-media"><span>Social Media</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="email-design"><span>Email Design</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="messaging"><span>Messaging</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="naming"><span>Naming</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="packaging-design"><span>Packaging Design</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="art-direction"><span>Art Direction</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="web-development"><span>Web Development</span></label>
-            <label class="services-option"><input type="checkbox" name="services" value="marketing"><span>Marketing</span></label>
+      <div class="field-group">
+        <p class="field-group-title">Services</p>
+        <p class="field-group-description">Select all that apply</p>
+        <div class="services-select-wrapper">
+          <div class="services-select" id="services">
+              <label class="services-option"><input type="checkbox" name="services" value="brand-strategy"><span>Brand Strategy</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="visual-identity"><span>Visual Identity</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="web-design"><span>Web Design</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="social-media"><span>Social Media</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="email-design"><span>Email Design</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="messaging"><span>Messaging</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="naming"><span>Naming</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="packaging-design"><span>Packaging Design</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="art-direction"><span>Art Direction</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="web-development"><span>Web Development</span></label>
+              <label class="services-option"><input type="checkbox" name="services" value="marketing"><span>Marketing</span></label>
+          </div>
         </div>
       </div>
-      
-      <p class="field-group-title" style="margin-bottom:0;">existing assets</p>
-      <div class="comment-field">
-        <label class="assets-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
-          Share any photography, pitch decks, logos, inspiration, or any other relevant materials! Just provide a link to your files on Box or Google Drive
-        </label>
-        <textarea
-          rows="10"
-          id="ContactForm-assets"
-          class="text-area field__input"
-          name="contact[assets]"
-          placeholder="Assets"
-        >
-        </textarea>
+
+      <div class="field-group">
+        <p class="field-group-title" style="margin-bottom:0;">existing assets</p>
+        <div class="comment-field">
+          <label class="assets-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
+            Share any photography, pitch decks, logos, inspiration, or any other relevant materials! Just provide a link to your files on Box or Google Drive
+          </label>
+          <textarea
+            rows="10"
+            id="ContactForm-assets"
+            class="text-area field__input"
+            name="contact[assets]"
+            placeholder="Assets"
+          >
+          </textarea>
+        </div>
+      </div>
+     
+      <div class="field-group">
+        <p class="field-group-title" style="margin-bottom:0;">timeline</p>
+        <div class="comment-field">
+          <label class="timeline-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
+            Do you have a specific deadline for completing this project? Are there any critical milestones we should be aware of?
+          </label>
+          <textarea
+            rows="10"
+            id="ContactForm-timeline"
+            class="text-area field__input"
+            name="contact[timeline]"
+            placeholder="Timeline"
+          >
+          </textarea>
+        </div>
       </div>
 
-      <div class="contact__fields">        
+      <div class="field-group contact__fields">        
         <div>
           <p class="field-group-title-small">Vibe check</p>
           <p style="margin-top:0;">What type of designer are you looking to hire?</p>
@@ -292,9 +328,11 @@
         </div>
       </div>
 
-      <p class="field-group-title-small" style="text-align:center;">Let's be friends</p>
-      <div style="width:100%;display:grid;place-items:center">
-        <label style="display:flex;align-items:center;"><input type="checkbox"><span style="margin-left: 10px" id="ContactForm-subscribe" name="contact[subscribe]">Sign up for creative goodness and exclusive discounts straight to your inbox!</span></label>
+      <div class="field-group">
+        <p class="field-group-title-small" style="text-align:center;">Let's be friends</p>
+        <div style="width:100%;display:grid;place-items:center">
+          <label style="display:flex;align-items:center;"><input type="checkbox"><span style="margin-left: 10px" id="ContactForm-subscribe" name="contact[subscribe]">Sign up for creative goodness and exclusive discounts straight to your inbox!</span></label>
+        </div>
       </div>
       
       <div class="contact__button">
