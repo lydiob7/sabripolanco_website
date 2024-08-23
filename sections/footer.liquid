@@ -42,7 +42,7 @@
     object-fit: cover;
   }
   {% if section.settings.klaviyo_form_id != blank %}
-    .klaviyo-form-{{ section.settings.klaviyo_form_id }} form [data-testid="form-row"] {
+    .klaviyo-form-{{ section.settings.klaviyo_form_id }} form [data-testid="form-row"]:not(:has(p)) {
       border-bottom: 1px solid black!important;
     }
     .klaviyo-form-{{ section.settings.klaviyo_form_id }} form input {
@@ -53,6 +53,14 @@
       font-family: "PP NeueBit"!important;
       font-size: 25px!important;
       font-weight: 700!important;
+    }
+    .klaviyo-form-{{ section.settings.klaviyo_form_id }} form [data-testid="form-row"] p span {
+      font-family: "Suisse Intl"!important;
+      font-size: 18px!important;
+    }
+    .klaviyo-form-{{ section.settings.klaviyo_form_id }} form [data-testid="form-row"]:first-child p span {
+      font-family: "SeriouslyNostalgic"!important;
+      font-size: 40px!important;
     }
     @media (min-width: 750px) {
       .klaviyo-form-{{ section.settings.klaviyo_form_id }} {
