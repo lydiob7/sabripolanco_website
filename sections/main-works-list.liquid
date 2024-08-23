@@ -48,7 +48,7 @@
     position: relative;
     border-radius: 10px;
     width: 100%;
-    height: 275px;
+    height: 75vw;
     object-fit: cover;
     overflow: hidden;
   }
@@ -126,7 +126,7 @@
       display: block;
     }
     .our-work_section .work_card .work_image {
-      height: 471px;
+      height: 40vw;
     }
     .our-work_section .work_card .work_image .main_image {
       transition: transform 0.1s ease;
@@ -194,6 +194,21 @@
       width: 100%;
     }
     .our-work_section .work_card .work_flex > div {
+      width: auto;
+    }
+    .our-work_section .work_card .work_tags {
+      justify-content: flex-end;
+    }
+  }
+  @media (min-width: 990px) {
+    .our-work_section .work_card .work_image {
+      height: 471px;
+    }
+    .our-work_section .work_card .work_flex {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      justify-content: space-between;
       width: 100%;
     }
     .our-work_section .work_card .work_tags {

@@ -1,16 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
     "sections": {
-        "main": { "type": "main-page", "disabled": true, "settings": { "padding_top": 28, "padding_bottom": 28 } },
+        "main": {
+            "type": "main-page",
+            "disabled": true,
+            "settings": {
+                "padding_top": 28,
+                "padding_bottom": 28
+            }
+        },
         "image_banner_7peRrX": {
             "type": "image-banner",
             "blocks": {
                 "text_XRKbjM": {
                     "type": "text",
-                    "settings": { "text": "MADE TO BE BOLD", "text_style": "caption-with-letter-spacing" }
+                    "settings": {
+                        "text": "MADE TO BE BOLD",
+                        "text_style": "caption-with-letter-spacing"
+                    }
                 },
                 "heading_gkbJq6": {
                     "type": "heading",
-                    "settings": { "heading": "Our Services", "heading_size": "h0" }
+                    "settings": {
+                        "heading": "Our Services",
+                        "heading_size": "h0"
+                    }
                 },
                 "text_hUPCj3": {
                     "type": "text",
@@ -58,7 +80,10 @@
         },
         "main_services_list_WrCWgy": {
             "type": "main-services-list",
-            "settings": { "padding_top": 0, "padding_bottom": 80 }
+            "settings": {
+                "padding_top": 0,
+                "padding_bottom": 80
+            }
         },
         "section_marquee_ChPyk7": {
             "type": "section-marquee",
@@ -76,19 +101,27 @@
             "blocks": {
                 "carousel_video_MQh7cX": {
                     "type": "carousel_video",
-                    "settings": { "video": "shopify://files/videos/Natasha_Review.mov" }
+                    "settings": {
+                        "video_url": "https://www.youtube.com/shorts/7PvUGpnykNk"
+                    }
                 },
                 "carousel_video_Fwx94T": {
                     "type": "carousel_video",
-                    "settings": { "video": "shopify://files/videos/Alysha_Testimonial.mov" }
+                    "settings": {
+                        "video_url": "https://www.youtube.com/shorts/lTTLJHORTMI"
+                    }
                 },
                 "carousel_video_aiw7Mx": {
                     "type": "carousel_video",
-                    "settings": { "video": "shopify://files/videos/Ramona_Testimonial.mov" }
+                    "settings": {
+                        "video_url": "https://www.youtube.com/shorts/iW15Jo8B1Eg"
+                    }
                 },
                 "carousel_video_6zh9Fp": {
                     "type": "carousel_video",
-                    "settings": { "video": "shopify://files/videos/Ania_Review.mov" }
+                    "settings": {
+                        "video_url": "https://www.youtube.com/shorts/pLBHtN9r4ws"
+                    }
                 }
             },
             "block_order": [
@@ -97,7 +130,10 @@
                 "carousel_video_aiw7Mx",
                 "carousel_video_6zh9Fp"
             ],
-            "settings": { "sub_head": "KIND WORDS", "headline": "Happy Clients" }
+            "settings": {
+                "sub_head": "KIND WORDS",
+                "headline": "Happy Clients"
+            }
         }
     },
     "order": [

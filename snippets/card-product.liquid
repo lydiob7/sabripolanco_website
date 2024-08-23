@@ -153,6 +153,13 @@
       </div>
       <div class="card__content">
         <div class="card__information">
+          {% if card_product.tags.size > 0 %}
+            <div class="product-tags">
+              {% for tag in card_product.tags %}
+                <div class="product-tag">{{ tag }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
           <h3
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
