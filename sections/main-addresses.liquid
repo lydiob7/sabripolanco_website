@@ -1,5 +1,9 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
+{% javascript %}
+  document.body.classList.add('invert-header-schema');
+{% endjavascript %}
+
 <script src="{{ 'customer.js' | asset_url }}" defer></script>
 
 {%- style -%}

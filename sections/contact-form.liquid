@@ -102,12 +102,10 @@
             autocapitalize="off"
             value="{% if form.pronouns %}{{ form.pronouns }}{% elsif customer %}{{ customer.pronouns }}{% endif %}"
             placeholder="Pronons"
-            required="true"
           >
           <label class="field__label" for="ContactForm-pronouns">
             Pronouns
-            <span aria-hidden="true">*</span></label
-          >
+          </label>
         </div>
         <div class="field field--with-error">
           <input
@@ -166,9 +164,8 @@
             name="contact[website]"
             value="{% if form.website %}{{ form.website }}{% elsif customer %}{{ customer.website }}{% endif %}"
             placeholder="Website/Instagram"
-            required="true"
           >
-          <label class="field__label" for="ContactForm-website">Website/Instagram <span aria-hidden="true">*</span></label>
+          <label class="field__label" for="ContactForm-website">Website/Instagram</label>
         </div>
         <div class="field">
           <div class="select">
@@ -235,20 +232,20 @@
 
       <div class="field-group">
         <p class="field-group-title">Services</p>
-        <p class="field-group-description">Select all that apply</p>
+        <p class="field-group-description">Select all that apply <span aria-hidden="true">*</span></p>
         <div class="services-select-wrapper">
           <div class="services-select" id="services">
-              <label class="services-option"><input type="checkbox" name="services" value="brand-strategy"><span>Brand Strategy</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="visual-identity"><span>Visual Identity</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="web-design"><span>Web Design</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="social-media"><span>Social Media</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="email-design"><span>Email Design</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="messaging"><span>Messaging</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="naming"><span>Naming</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="packaging-design"><span>Packaging Design</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="art-direction"><span>Art Direction</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="web-development"><span>Web Development</span></label>
-              <label class="services-option"><input type="checkbox" name="services" value="marketing"><span>Marketing</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][brand-strategy]" value="brand-strategy"><span>Brand Strategy</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][visual-identity]" value="visual-identity"><span>Visual Identity</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][web-design]" value="web-design"><span>Web Design</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][social-media]" value="social-media"><span>Social Media</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][email-design]" value="email-design"><span>Email Design</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][messaging]" value="messaging"><span>Messaging</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][naming]" value="naming"><span>Naming</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][packaging-design]" value="packaging-design"><span>Packaging Design</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][art-direction]" value="art-direction"><span>Art Direction</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][web-development]" value="web-development"><span>Web Development</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services][marketing]" value="marketing"><span>Marketing</span></label>
           </div>
         </div>
       </div>
@@ -257,7 +254,7 @@
         <p class="field-group-title" style="margin-bottom:0;">existing assets</p>
         <div class="comment-field">
           <label class="assets-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
-            Share any photography, pitch decks, logos, inspiration, or any other relevant materials! Just provide a link to your files on Box or Google Drive
+            Share any photography, pitch decks, logos, inspiration, or any other relevant materials! Just provide a link to your files on Box or Google Drive <span aria-hidden="true">*</span>
           </label>
           <textarea
             rows="10"
@@ -265,6 +262,7 @@
             class="text-area field__input"
             name="contact[assets]"
             placeholder="Assets"
+            required="true"
           >
           </textarea>
         </div>
@@ -274,7 +272,7 @@
         <p class="field-group-title" style="margin-bottom:0;">timeline</p>
         <div class="comment-field">
           <label class="timeline-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
-            Do you have a specific deadline for completing this project? Are there any critical milestones we should be aware of?
+            Do you have a specific deadline for completing this project? Are there any critical milestones we should be aware of? <span aria-hidden="true">*</span>
           </label>
           <textarea
             rows="10"
@@ -282,6 +280,7 @@
             class="text-area field__input"
             name="contact[timeline]"
             placeholder="Timeline"
+            required="true"
           >
           </textarea>
         </div>
@@ -289,7 +288,7 @@
 
       <div class="field-group contact__fields">        
         <div>
-          <p class="field-group-title-small">Vibe check</p>
+          <p class="field-group-title-small">Vibe check <span aria-hidden="true">*</span></p>
           <p style="margin-top:0;">What type of designer are you looking to hire?</p>
           <div class="field">
             <div class="select">
@@ -311,7 +310,7 @@
           </div>
         </div>
         <div>
-          <p class="field-group-title-small">How did you hear about us?</p>
+          <p class="field-group-title-small">How did you hear about us? <span aria-hidden="true">*</span></p>
           <p style="margin-top:0;">We’d love to thank them!</p>
           <div class="field">
             <input
@@ -331,7 +330,7 @@
       <div class="field-group">
         <p class="field-group-title-small" style="text-align:center;">Let's be friends</p>
         <div style="width:100%;display:grid;place-items:center">
-          <label style="display:flex;align-items:center;"><input type="checkbox"><span style="margin-left: 10px" id="ContactForm-subscribe" name="contact[subscribe]">Sign up for creative goodness and exclusive discounts straight to your inbox!</span></label>
+          <label style="display:flex;align-items:center;"><input type="checkbox" name="contact[subscribe_to_newsletter]" checked="true"><span style="margin-left: 10px" id="ContactForm-subscribe" name="contact[subscribe]">Sign up for creative goodness and exclusive discounts straight to your inbox!</span></label>
         </div>
       </div>
       

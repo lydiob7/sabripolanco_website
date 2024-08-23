@@ -340,7 +340,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   text-decoration: none;
 }
 
-.submenu-heading {
+.drawer_submenu-heading {
   font-family: Suisse Intl;
   font-size: 14px;
   font-weight: 500;
@@ -349,6 +349,21 @@ details[open].menu-opening > .menu-drawer__submenu {
   margin-bottom: 2rem;
   padding: 1.1rem 3rem;
 }
-.submenu-heading a {
+.drawer_submenu-heading a {
   color: #000;
+}
+
+.mobile_account-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 18px;
+  color: black;
+  padding: 1.1rem 3rem;
+  margin-top: 2rem;
+  line-height: 1;
+}
+.mobile_account-link .icon {
+  width: 2rem;
+  height: 2rem;
 }
