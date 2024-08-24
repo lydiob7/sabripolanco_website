@@ -5,6 +5,10 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
+
+  #newsletter-subscription {
+    display: none;
+  }
   
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -17,7 +21,7 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div id="section-{{ section.id }}" class="color-{{ section.settings.color_scheme }} gradient">
   <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
     {%- if section.settings.supra_title != blank -%}
       <p class="supra_title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -48,22 +52,9 @@
       endif
     -%}
     {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
-      {%- if form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-            {% render 'icon-error' %}
-            {{ 'templates.contact.form.error_heading' | t }}
-          </h2>
-        </div>
-        <ul class="form-status-list caption-large" role="list">
-          <li>
-            <a href="#ContactForm-email" class="link">
-              {{ form.errors.translated_fields.email | capitalize }}
-              {{ form.errors.messages.email }}
-            </a>
-          </li>
-        </ul>
-      {%- endif -%}
+      
+      {{ form.errors | default_errors }}
+      
       <div class="field-group contact__fields">
         <p class="field-group-title">Contact info</p>
         
@@ -73,7 +64,7 @@
             autocomplete="name"
             type="text"
             id="ContactForm-first_name"
-            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            name="contact[first_name]"
             value="{% if form.first_name %}{{ form.first_name }}{% elsif customer %}{{ customer.first_name }}{% endif %}"
             placeholder="{{ 'templates.contact.form.name' | t }}"
             required="true"
@@ -116,6 +107,7 @@
             name="contact[email]"
             spellcheck="false"
             autocapitalize="off"
+            required="true"
             value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
             aria-required="true"
             {% if form.errors contains 'email' %}
@@ -176,7 +168,7 @@
               name="contact[budget]"
               required="true"
             >
-              <option class="field__label" selected disabled>Budget <span aria-hidden="true">*</span></option>
+              <option class="field__label" selected disabled hidden value="">Budget <span aria-hidden="true">*</span></option>
               <option class="field__label" value="5/10">$5k-$10k</option>
               <option class="field__label" value="10/20">$10k-$20k</option>
               <option class="field__label" value="25/50">$25k-$50k</option>
@@ -189,8 +181,9 @@
         <div class="field">
           <input
             class="field__input"
-            type="text"
+            type="date"
             id="ContactForm-start_date"
+            min="{{ "now" | date: "%Y-%m-%d" }}"
             name="contact[start_date]"
             value="{% if form.start_date %}{{ form.start_date }}{% elsif customer %}{{ customer.start_date }}{% endif %}"
             placeholder="Start Date"
@@ -210,6 +203,7 @@
           class="text-area field__input"
           name="contact[project_overview]"
           placeholder="Project overview"
+          required="true"
         >
           {{- form.body -}}
         </textarea>
@@ -225,6 +219,7 @@
           class="text-area field__input"
           name="contact[project_expectation]"
           placeholder="Project Expectation"
+          required="true"
         >
           {{- form.body -}}
         </textarea>
@@ -235,23 +230,24 @@
         <p class="field-group-description">Select all that apply <span aria-hidden="true">*</span></p>
         <div class="services-select-wrapper">
           <div class="services-select" id="services">
-              <label class="services-option"><input type="checkbox" name="contact[services][brand-strategy]" value="brand-strategy"><span>Brand Strategy</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][visual-identity]" value="visual-identity"><span>Visual Identity</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][web-design]" value="web-design"><span>Web Design</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][social-media]" value="social-media"><span>Social Media</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][email-design]" value="email-design"><span>Email Design</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][messaging]" value="messaging"><span>Messaging</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][naming]" value="naming"><span>Naming</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][packaging-design]" value="packaging-design"><span>Packaging Design</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][art-direction]" value="art-direction"><span>Art Direction</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][web-development]" value="web-development"><span>Web Development</span></label>
-              <label class="services-option"><input type="checkbox" name="contact[services][marketing]" value="marketing"><span>Marketing</span></label>
+              <input name="contact[services]" type="text" required>
+              <label class="services-option"><input type="checkbox" name="contact[services_brand-strategy]" value="brand-strategy"><span>Brand Strategy</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_visual-identity]" value="visual-identity"><span>Visual Identity</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_web-design]" value="web-design"><span>Web Design</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_social-media]" value="social-media"><span>Social Media</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_email-design]" value="email-design"><span>Email Design</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_messaging]" value="messaging"><span>Messaging</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_naming]" value="naming"><span>Naming</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_packaging-design]" value="packaging-design"><span>Packaging Design</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_art-direction]" value="art-direction"><span>Art Direction</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_web-development]" value="web-development"><span>Web Development</span></label>
+              <label class="services-option"><input type="checkbox" name="contact[services_marketing]" value="marketing"><span>Marketing</span></label>
           </div>
         </div>
       </div>
 
       <div class="field-group">
-        <p class="field-group-title" style="margin-bottom:0;">existing assets</p>
+        <p class="field-group-title">existing assets</p>
         <div class="comment-field">
           <label class="assets-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
             Share any photography, pitch decks, logos, inspiration, or any other relevant materials! Just provide a link to your files on Box or Google Drive <span aria-hidden="true">*</span>
@@ -269,7 +265,7 @@
       </div>
      
       <div class="field-group">
-        <p class="field-group-title" style="margin-bottom:0;">timeline</p>
+        <p class="field-group-title">timeline</p>
         <div class="comment-field">
           <label class="timeline-label" for="ContactForm-body" style="display:block;margin-bottom:1rem;">
             Do you have a specific deadline for completing this project? Are there any critical milestones we should be aware of? <span aria-hidden="true">*</span>
@@ -299,7 +295,7 @@
                 name="contact[vibe_check]"
                 required="true"
               >
-              <option class="field__label" selected disabled>Select an Option <span aria-hidden="true">*</span></option>
+              <option class="field__label" selected disabled hidden value="">Select an Option <span aria-hidden="true">*</span></option>
               <option class="field__label" value="partner">A partner I can trust for their expertise </option>
               <option class="field__label" value="executor">I know what I want, I just need someone to execute it </option>
               </select>
@@ -318,7 +314,6 @@
               type="text"
               id="ContactForm-how_did_you_hear_about_us"
               name="contact[how_did_you_hear_about_us]"
-              value="{% if form.how_did_you_hear_about_us %}{{ form.how_did_you_hear_about_us }}{% elsif customer %}{{ customer.how_did_you_hear_about_us }}{% endif %}"
               placeholder="Behance, a friend, Contra, instagram,  etc"
               required="true"
             >
@@ -330,7 +325,7 @@
       <div class="field-group">
         <p class="field-group-title-small" style="text-align:center;">Let's be friends</p>
         <div style="width:100%;display:grid;place-items:center">
-          <label style="display:flex;align-items:center;"><input type="checkbox" name="contact[subscribe_to_newsletter]" checked="true"><span style="margin-left: 10px" id="ContactForm-subscribe" name="contact[subscribe]">Sign up for creative goodness and exclusive discounts straight to your inbox!</span></label>
+          <label style="display:flex;align-items:center;"><input type="checkbox" name="customer[accepts_marketing]" checked="true"><span style="margin-left: 10px" id="ContactForm-subscribe" name="contact[subscribe]">Sign up for creative goodness and exclusive discounts straight to your inbox!</span></label>
         </div>
       </div>
       
@@ -341,7 +336,7 @@
       </div>
       {%- if form.posted_successfully? -%}
         <script>
-          window.location = "https://sabrinapolanco.co/pages/inquiry-confirmationn";
+          window.location = "https://sabrinapolanco.co/pages/inquiry-confirmation";
         </script>
         <h3
           class="newsletter-form__message newsletter-form__message--success form__message"
@@ -354,8 +349,58 @@
         </h3>
       {%- endif -%}
     {%- endform -%}
+
+    {% form 'customer', id: "newsletter-subscription" %}
+        <input type="text" name="contact[first_name]" />
+        <input type="text" name="contact[last_name]" />
+        <input type="email" name="contact[email]" />
+
+        {% if form.posted_successfully? %}
+          <script>
+            window.location = "https://sabrinapolanco.co/pages/inquiry-confirmation";
+          </script>
+        {% endif %}
+    {% endform %}
+
   </div>
 </div>
+
+{% javascript %}
+  const servicesCheckboxes = [...document.querySelectorAll('.services-select input[type="checkbox"]')];
+  const hiddenInput = document.querySelector('.services-select input[name="contact[services]"');
+    
+  servicesCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", (ev) => {
+      if(servicesCheckboxes.filter(checkbox => checkbox.checked).length === 0) hiddenInput.required = true;
+      else hiddenInput.required = false;
+    })
+  });
+
+  const contactForm = document.querySelector("#ContactForm");
+  const newsletterForm = document.querySelector("#newsletter-subscription");
+  const acceptsMarketingCheckbox = document.querySelector('input[name="customer[accepts_marketing]"]');
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", () => {
+      if (acceptsMarketingCheckbox?.checked) {
+        const formData = new FormData(contactForm);
+        const firstName = formData.get("contact[first_name]");
+        const lastName = formData.get("contact[last_name]");
+        const email = formData.get("contact[email]");
+        
+        
+        const newsletterFormFirstNameInput = document.querySelector('#newsletter-subscription input[name="contact[first_name]"]');
+        newsletterFormFirstNameInput.setAttribute("value", firstName);
+        const newsletterFormLastNameInput = document.querySelector('#newsletter-subscription input[name="contact[last_name]"]');
+        newsletterFormLastNameInput.setAttribute("value", lastName);
+        const newsletterFormEmailInput = document.querySelector('#newsletter-subscription input[name="contact[email]"]');
+        newsletterFormEmailInput.setAttribute("value", email);
+        
+        newsletterForm.submit();
+      }
+    })
+  }
+{% endjavascript %}
 
 {% schema %}
 {

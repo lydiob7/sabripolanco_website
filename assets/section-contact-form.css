@@ -79,6 +79,7 @@ padding: 0!important;
 
 .contact .comment-field .text-area {
 border: 1px solid #000000;
+padding: 1rem 2rem!important;
 }
 
 .field__input {
@@ -105,6 +106,13 @@ justify-content: center;
 flex-wrap: wrap;
 gap: 16px 20px;
 width: 100%;
+position: relative;
+}
+.services-select input[name="contact[services]"] {
+position: absolute;
+width: 0.1px;
+height: 0.1px;
+opacity: 0;
 }
 
 .services-option span {
