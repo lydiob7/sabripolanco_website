@@ -680,8 +680,8 @@ summary::-webkit-details-marker {
 
 /* base-focus */
 /*
-  Focus ring - default (with offset)
-*/
+    Focus ring - default (with offset)
+  */
 
 *:focus {
     outline: 0;
@@ -702,8 +702,8 @@ summary::-webkit-details-marker {
 }
 
 /*
-  Focus ring - inset
-*/
+    Focus ring - inset
+  */
 
 .focus-inset:focus-visible {
     outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
@@ -718,8 +718,8 @@ summary::-webkit-details-marker {
 }
 
 /*
-  Focus ring - none
-*/
+    Focus ring - none
+  */
 
 /* Dangerous for a11y - Use with care */
 .focus-none {
@@ -2510,6 +2510,7 @@ product-info .loading__spinner:not(.hidden) ~ *,
 .header__icon {
     color: rgb(var(--color-foreground));
 }
+body:has(.shopify-policy__container) .header__icon,
 body.menu-drawer-open .header__icon,
 body.invert-header-schema .header__icon {
     color: rgb(var(--color-background));
@@ -2772,11 +2773,13 @@ details[open] > .header__submenu {
     color: rgb(var(--color-foreground));
 }
 
+body:has(.shopify-policy__container) .header__menu-item,
 body.menu-drawer-open .header__menu-item,
 body.invert-header-schema .header__menu-item {
     color: rgb(var(--color-background));
 }
 
+body:has(.shopify-policy__container) .header__menu-item:hover,
 body.menu-drawer-open .header__menu-item:hover,
 body.invert-header-schema .header__menu-item:hover {
     color: rgb(var(--color-background));
@@ -2809,6 +2812,7 @@ details[open] > .header__menu-item .icon-caret {
     text-decoration: underline;
     text-underline-offset: 0.3rem;
 }
+body:has(.shopify-policy__container) .header__active-menu-item,
 body.menu-drawer-open .header__active-menu-item,
 body.invert-header-schema .header__active-menu-item {
     color: rgb(var(--color-background));
@@ -3480,4 +3484,10 @@ details-disclosure > details {
     .animate--hover-vertical-lift .button:not([disabled]).button--secondary:hover:after {
         --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
     }
+}
+
+/* Modify policies pages */
+
+.shopify-policy__container {
+    padding-top: 104px !important;
 }

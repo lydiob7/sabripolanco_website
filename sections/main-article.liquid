@@ -1,5 +1,9 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
+{% javascript %}
+  document.body.classList.add('invert-header-schema');
+{% endjavascript %}
+
 <article class="article-template" itemscope itemtype="http://schema.org/BlogPosting">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
