@@ -71,15 +71,40 @@
               >
               {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
             </div>
+            
+            <div class="index_tag">{{ index }}</div>
+            <div class="arrow_tag">{% render 'icon-arrow' → %}</div>
           </div>
         {%- endif -%}
         <div class="card__content">
           <div class="card__information">
+            <div
+              class="reading-time"
+              {{ block.shopify_attributes }}
+            >
+              {% assign content = article.content | split: " " %}
+              {% assign word_count = content.size | plus: 0.1 %}
+              {% assign reading_minutes = word_count | divided_by: 200.0 | ceil %}
+              {{ reading_minutes }} minute read
+            </div>
+
             <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
               <a href="{{ article.url }}" class="full-unstyled-link">
                 {{ article.title | truncate: 50 | escape }}
               </a>
             </h3>
+
+            <div
+              class="post-tags"
+              {{ block.shopify_attributes }}
+            >
+              {% for tag in article.tags %}
+                <div class="article-tag">
+                  {{ tag }}
+                </div>
+              {% endfor %}
+            </div>
+
             <div class="article-card__info caption-with-letter-spacing h5">
               {%- if show_date -%}
                 <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
@@ -114,11 +139,33 @@
       </div>
       <div class="card__content">
         <div class="card__information">
+          <div
+            class="reading-time"
+            {{ block.shopify_attributes }}
+          >
+            {% assign content = article.content | split: " " %}
+            {% assign word_count = content.size | plus: 0.1 %}
+            {% assign reading_minutes = word_count | divided_by: 200.0 | ceil %}
+            {{ reading_minutes }} minute read
+          </div>
+
           <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
             <a href="{{ article.url }}" class="full-unstyled-link">
               {{ article.title | truncate: 50 | escape }}
             </a>
           </h3>
+
+          <div
+            class="post-tags"
+            {{ block.shopify_attributes }}
+          >
+            {% for tag in article.tags %}
+              <div class="article-tag">
+                {{ tag }}
+              </div>
+            {% endfor %}
+          </div>
+          
           <div class="article-card__info caption-with-letter-spacing h5">
             {%- if show_date -%}
               <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>

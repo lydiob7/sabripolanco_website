@@ -78,6 +78,28 @@
           {{ article.content }}
         </div>
 
+      {% if section.settings.promoted_link_heading != blank and section.settings.promoted_link_url != blank %}
+        <a style="color:inherit;" href="{{ section.settings.promoted_link_url }}">
+          <div class="article-template__promoted_link page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <div>
+              <div class="promoted_link-heading">
+                {{ section.settings.promoted_link_heading }}
+              </div>
+              {% if section.settings.promoted_link_body != blank %}
+                <div class="promoted_link-body">
+                  {{ section.settings.promoted_link_body }}
+                </div>
+              {% endif %}
+            </div>
+            <div>
+              <div class="arrow_tag">{% render 'icon-arrow' → %}</div>
+            </div>
+          </div>
+        </a>
+      {% endif %}
+
       {%- when 'share' -%}
         <div
           class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -85,6 +107,29 @@
         >
           {% assign share_url = request.origin | append: article.url %}
           {% render 'share-button', block: block, share_link: share_url %}
+        </div>
+      
+      {%- when 'reading-time' -%}
+        <div
+          class="article-template__reading-time page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {% assign content = article.content | split: " " %}
+          {% assign word_count = content.size | plus: 0.1 %}
+          {% assign reading_minutes = word_count | divided_by: 200.0 | ceil %}
+          {{ reading_minutes }} minute read
+        </div>
+      
+      {%- when 'post-tags' -%}
+        <div
+          class="article-template__post-tags page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {% for tag in article.tags %}
+            <div class="article-tag">
+              {{ tag }}
+            </div>
+          {% endfor %}
         </div>
     {%- endcase -%}
   {%- endfor -%}
@@ -397,7 +442,36 @@
           "content": "t:sections.main-article.blocks.share.settings.title_info.content"
         }
       ]
+    },
+    {
+      "type": "reading-time",
+      "name": "Reading time",
+      "limit": 2,
+      "settings": []
+    },
+    {
+      "type": "post-tags",
+      "name": "Post tags",
+      "limit": 2,
+      "settings": []
     }
+  ],
+  "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "promoted_link_heading",
+        "label": "Promoted Link Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "promoted_link_body",
+        "label": "Promoted Link Body"
+      },
+      {
+        "type": "url",
+        "id": "promoted_link_url",
+        "label": "Promoted Link URL"
+      }
   ]
 }
 {% endschema %}

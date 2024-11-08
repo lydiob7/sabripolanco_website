@@ -23,23 +23,25 @@
         "main": {
             "type": "main-article",
             "blocks": {
-                "featured_image": {
-                    "type": "featured_image",
-                    "settings": {
-                        "image_height": "adapt"
-                    }
-                },
                 "title": {
                     "type": "title",
                     "settings": {
-                        "blog_show_date": true,
+                        "blog_show_date": false,
                         "blog_show_author": false
                     }
                 },
-                "share": {
-                    "type": "share",
+                "reading_time_9CTP4i": {
+                    "type": "reading-time",
+                    "settings": {}
+                },
+                "post_tags_LE9zqr": {
+                    "type": "post-tags",
+                    "settings": {}
+                },
+                "featured_image": {
+                    "type": "featured_image",
                     "settings": {
-                        "share_label": "Share"
+                        "image_height": "small"
                     }
                 },
                 "content": {
@@ -47,9 +49,46 @@
                     "settings": {}
                 }
             },
-            "block_order": ["featured_image", "title", "share", "content"],
-            "settings": {}
+            "block_order": ["title", "reading_time_9CTP4i", "post_tags_LE9zqr", "featured_image", "content"],
+            "custom_css": [
+                ".article-template__hero-container .media {height: 250px;}",
+                "@media screen and (min-width: 750px) {.article-template__comment-wrapper {padding: 8rem 0; }}",
+                "@media screen and (min-width: 990px) {.article-template__hero-container {max-width: 72.6rem; } .article-template__hero-container .media {height: 375px; border-radius: 12px; }}"
+            ],
+            "settings": {
+                "promoted_link_heading": "{{ article.metafields.custom.promoted_link_heading.value }}",
+                "promoted_link_body": "{{ article.metafields.custom.promoted_link_body | metafield_tag }}",
+                "promoted_link_url": "{{ article.metafields.custom.promoted_link_url.value }}"
+            }
+        },
+        "section_marquee_DRYhBb": {
+            "type": "section-marquee",
+            "settings": {
+                "main_text": "Now booking August & September",
+                "secondary_text": "WELLNESS FOR ALL",
+                "cta_text": "GET STARTED",
+                "cta_url": "",
+                "padding_top": 0,
+                "padding_bottom": 0
+            }
+        },
+        "featured_blog_8C8CWh": {
+            "type": "featured-blog",
+            "settings": {
+                "heading": "Related Articles",
+                "heading_size": "h0",
+                "blog": "journal",
+                "post_limit": 3,
+                "columns_desktop": 3,
+                "color_scheme": "",
+                "show_image": true,
+                "show_date": false,
+                "show_author": false,
+                "show_view_all": true,
+                "padding_top": 80,
+                "padding_bottom": 80
+            }
         }
     },
-    "order": ["section_spacer_9DB9yh", "main"]
+    "order": ["section_spacer_9DB9yh", "main", "section_marquee_DRYhBb", "featured_blog_8C8CWh"]
 }
