@@ -28,7 +28,7 @@
 {%- endstyle -%}
 
 {%- paginate blog.articles by 6 -%}
-  <div class="main-blog page-width section-{{ section.id }}-padding">
+  <div id="section-{{ section.id }}" class="main-blog page-width section-{{ section.id }}-padding">
     {% comment %} <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {{ blog.title | escape }}
     </h1> {% endcomment %}
@@ -42,12 +42,12 @@
       <div class="blog-filter">
         <div class="list-group">
           <div class="tag-filters">
-            <a href="{{ blog.url }}" class="tag-filter-item{% if active_tag == 'all' %} active{% endif %}">
+            <a href="{{ blog.url }}#section-{{ section.id }}" class="tag-filter-item{% if active_tag == 'all' %} active{% endif %}">
               {{ 'All' }}
             </a>
             {% for tag in blog.all_tags %}
               {% assign tag_slug = tag | handleize %}
-              <a href="{{ blog.url }}/tagged/{{ tag_slug }}" class="tag-filter-item{% if active_tag == tag_slug %} active{% endif %}">
+              <a href="{{ blog.url }}/tagged/{{ tag_slug }}#section-{{ section.id }}" class="tag-filter-item{% if active_tag == tag_slug %} active{% endif %}">
               {{ tag }}
               </a>
             {% endfor %}

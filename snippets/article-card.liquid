@@ -160,9 +160,10 @@
             {{ block.shopify_attributes }}
           >
             {% for tag in article.tags %}
-              <div class="article-tag">
-                {{ tag }}
-              </div>
+              {% assign tag_slug = tag | handleize %}
+              <a href="{{ blog.url }}/tagged/{{ tag_slug }}#section-{{ section.id }}" class="article-tag">
+              {{ tag }}
+              </a>
             {% endfor %}
           </div>
           

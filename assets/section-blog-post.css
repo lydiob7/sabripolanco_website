@@ -55,7 +55,6 @@
 
 .article-template header {
     margin-top: 4.4rem;
-    margin-bottom: 2rem;
     line-height: calc(0.8 / var(--font-body-scale));
 }
 
@@ -212,7 +211,8 @@
 .article-template__reading-time {
     color: #bababa;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    letter-spacing: 0px;
 }
 
 .article-template__post-tags {
@@ -242,14 +242,21 @@
     border-radius: 10px;
     background-color: #cce6f7;
 }
+.article-template__promoted_link:hover {
+    box-shadow: 10px 10px 0 #058ae5;
+}
 .article-template__promoted_link .promoted_link-heading {
     font-family: "SeriouslyNostalgic";
     font-size: 32px;
+    line-height: 1.1;
 }
 @media (min-width: 750px) {
     .article-template__promoted_link .promoted_link-heading {
         font-size: 44px;
     }
+}
+.article-template__promoted_link .promoted_link-body p {
+    line-height: 1.6;
 }
 .article-template__promoted_link .arrow_tag {
     margin-top: 4rem;
