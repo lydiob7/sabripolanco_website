@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
     "sections": {
         "section_spacer_F4mNjT": {
@@ -14,23 +23,41 @@
         "main": {
             "type": "main-product",
             "blocks": {
-                "vendor": {
-                    "type": "text",
-                    "settings": {
-                        "text": "{{ product.vendor }}",
-                        "text_style": "uppercase"
-                    }
-                },
                 "title": {
                     "type": "title",
+                    "settings": {}
+                },
+                "judge_me_reviews_preview_badge_Khnyyj": {
+                    "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
                     "settings": {}
                 },
                 "price": {
                     "type": "price",
                     "settings": {}
                 },
+                "tolstoy_shoppable_video_ugc_stories_block_mzcenr": {
+                    "type": "shopify://apps/tolstoy-shoppable-video-ugc/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+                    "settings": {
+                        "publishId": "ati7cszu1puo8"
+                    }
+                },
                 "description": {
                     "type": "description",
+                    "settings": {}
+                },
+                "buy_buttons": {
+                    "type": "buy_buttons",
+                    "settings": {
+                        "show_dynamic_checkout": false,
+                        "show_gift_card_recipient": true
+                    }
+                },
+                "information_accordion_rDUYVd": {
+                    "type": "information_accordion",
+                    "settings": {}
+                },
+                "secondary_summary_Y8j3mn": {
+                    "type": "secondary_summary",
                     "settings": {}
                 },
                 "variant_picker": {
@@ -45,41 +72,30 @@
                     "type": "quantity_selector",
                     "disabled": true,
                     "settings": {}
-                },
-                "buy_buttons": {
-                    "type": "buy_buttons",
-                    "settings": {
-                        "show_dynamic_checkout": true,
-                        "show_gift_card_recipient": true
-                    }
-                },
-                "share": {
-                    "type": "share",
-                    "settings": {
-                        "share_label": "Share"
-                    }
                 }
             },
             "block_order": [
-                "vendor",
                 "title",
+                "judge_me_reviews_preview_badge_Khnyyj",
                 "price",
+                "tolstoy_shoppable_video_ugc_stories_block_mzcenr",
                 "description",
-                "variant_picker",
-                "quantity_selector",
                 "buy_buttons",
-                "share"
+                "information_accordion_rDUYVd",
+                "secondary_summary_Y8j3mn",
+                "variant_picker",
+                "quantity_selector"
             ],
-            "custom_css": [".media {border-radius: 20px;}"],
+            "custom_css": [".media {border-radius: 20px;}", ".product-form {margin: 24px 0 48px 0;}"],
             "settings": {
-                "enable_sticky_info": true,
+                "enable_sticky_info": false,
                 "color_scheme": "scheme-1",
                 "media_size": "medium",
                 "constrain_to_viewport": true,
                 "media_fit": "contain",
-                "gallery_layout": "stacked",
+                "gallery_layout": "vertical_scroll",
                 "media_position": "left",
-                "image_zoom": "lightbox",
+                "image_zoom": "none",
                 "mobile_thumbnails": "hide",
                 "hide_variants": true,
                 "enable_video_looping": false,
@@ -103,7 +119,7 @@
             "custom_css": [".faqs_wrapper {margin: 4rem 0;}"],
             "settings": {
                 "caption": "Features",
-                "heading": "What’s Inside",
+                "heading": "Why You'll Love It",
                 "open_first_collapsible_row": false,
                 "button_text": "",
                 "button_link": "",
@@ -111,26 +127,21 @@
                 "padding_bottom": 0
             }
         },
-        "section_services_M9xwxP": {
-            "type": "section-services",
-            "settings": {
-                "sub_head": "THE STUDIO",
-                "headline": "Our <em>Services</em>",
-                "body": "Embracing the audacity to be different, we bring brands to life in bold.",
-                "cta_text": "See All Services",
-                "padding_top": 40,
-                "padding_bottom": 52
-            }
-        },
         "related-products": {
             "type": "related-products",
+            "custom_css": [
+                ".grid__item {padding: 0 0.5rem;}",
+                ".card__heading {font-size: 28px;}",
+                ".card__inner {border-radius: 22px; overflow: hidden;}",
+                "@media (min-width: 750px) {.grid__item {padding: 0 1rem; } .card__heading {font-size: 40px; }}"
+            ],
             "settings": {
                 "heading": "You may also like",
-                "heading_size": "h2",
+                "heading_size": "h0",
                 "products_to_show": 4,
                 "columns_desktop": 4,
                 "color_scheme": "scheme-1",
-                "image_ratio": "square",
+                "image_ratio": "adapt",
                 "image_shape": "default",
                 "show_secondary_image": true,
                 "show_vendor": false,
@@ -139,7 +150,20 @@
                 "padding_top": 36,
                 "padding_bottom": 28
             }
+        },
+        "1726889066b9c5ce84": {
+            "type": "apps",
+            "blocks": {
+                "judge_me_reviews_review_widget_AAFGDn": {
+                    "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+                    "settings": {}
+                }
+            },
+            "block_order": ["judge_me_reviews_review_widget_AAFGDn"],
+            "settings": {
+                "include_margins": true
+            }
         }
     },
-    "order": ["section_spacer_F4mNjT", "main", "section_faqs_xrxQUV", "section_services_M9xwxP", "related-products"]
+    "order": ["section_spacer_F4mNjT", "main", "section_faqs_xrxQUV", "related-products", "1726889066b9c5ce84"]
 }

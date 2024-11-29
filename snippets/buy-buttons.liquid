@@ -90,6 +90,8 @@
               {%- else -%}
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
+
+              {% render 'icon-arrow' %}
             </span>
             {%- render 'loading-spinner' -%}
           </button>
